@@ -5,6 +5,9 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'com.lionheart'
     compileSdk 33
@@ -17,6 +20,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String","BASE_URL",properties['base.url']
     }
 
     buildTypes {
@@ -110,7 +114,7 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:5.0.1'
     // lottie
     implementation "com.airbnb.android:lottie:6.0.1"
-    
+
 
     /******** Test ********/
     // junit
