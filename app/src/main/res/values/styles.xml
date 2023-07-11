@@ -6,8 +6,13 @@
         <item name="android:insetBottom">0dp</item>
     </style>
 
-    <style name="Widget.LionHeart.BottomNavigation.Text" parent="Widget.Design.BottomNavigationView">
-        <item name="android:textStyle">normal</item>
+    <style name="Widget.LionHeart.BottomNavigation.Text.Active" parent="Widget.Design.BottomNavigationView">
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="Widget.LionHeart.BottomNavigation.Text.Inactive" parent="Widget.Design.BottomNavigationView">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
         <item name="android:textSize">9sp</item>
     </style>
 
