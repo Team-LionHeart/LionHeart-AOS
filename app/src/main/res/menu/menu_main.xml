@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_today"
+        android:icon="@drawable/selector_menu_today"
+        android:title="투데이"/>
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/selector_menu_search"
+        android:title="검색"/>
+    <item
+        android:id="@+id/menu_course"
+        android:icon="@drawable/selector_menu_course"
+        android:title="커리큘럼"/>
+    <item
+        android:id="@+id/menu_challenge"
+        android:icon="@drawable/selector_menu_challenge"
+        android:title="챌린지"/>
+</menu>
