@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- keycolor -->
+    <color name="lion_red">#F0003F</color>
+    <color name="component_lion_red">#FF2D64</color>
+
+    <!-- grayscale -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="background">#151517</color>
+    <color name="gray_100">#F2F2F2</color>
+    <color name="gray_200">#E8E8E8</color>
+    <color name="gray_300">#D3D3D3</color>
+    <color name="gray_400">#B9B9B9</color>
+    <color name="gray_500">#8E8E8E</color>
+    <color name="gray_600">#6A6A6A</color>
+    <color name="gray_700">#4A4A4A</color>
+    <color name="gray_800">#2D2D2D</color>
+    <color name="gray_900">#262626</color>
+    <color name="gray_1000">#1A1A1A</color>
 </resources>
