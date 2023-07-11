@@ -14,6 +14,8 @@
         <item name="colorOnBackground">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?android:colorBackground</item>
+        <!-- etc -->
+        <item name="materialButtonStyle">@style/Widget.LionHeart.Button</item>
     </style>
 
     <style name="Theme.LionHeart" parent="Base.Theme.LionHeart" />
