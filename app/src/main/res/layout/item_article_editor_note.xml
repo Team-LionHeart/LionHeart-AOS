@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
-            android:text="Editor's Note"
+            tools:text="Editor's Note"
             android:textAppearance="@style/TextAppearance.LionHeart.Body2_Medium"
             android:textColor="@color/gray_900"
 
@@ -37,7 +37,7 @@
             android:id="@+id/tv_article_editor_note_body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="안녕하세요, 아기사자님!\n라이온하트에서 오늘은 출산카드와 관련된 이야기를 들려드리려고 해요."
+            tools:text="안녕하세요, 아기사자님!\n라이온하트에서 오늘은 출산카드와 관련된 이야기를 들려드리려고 해요."
 
             android:textAppearance="@style/TextAppearance.LionHeart.Body2_Regular"
             android:textColor="@color/gray_900"
