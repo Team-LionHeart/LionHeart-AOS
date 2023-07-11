@@ -1,7 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.LionHeart" parent="Theme.Material3.Dark.NoActionBar">
-
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/lion_red</item>
+        <item name="colorPrimaryVariant">@color/component_lion_red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/lion_red</item>
+        <item name="colorSecondaryVariant">@color/component_lion_red</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Neutral brand color. -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?android:colorBackground</item>
     </style>
 
     <style name="Theme.LionHeart" parent="Base.Theme.LionHeart" />
