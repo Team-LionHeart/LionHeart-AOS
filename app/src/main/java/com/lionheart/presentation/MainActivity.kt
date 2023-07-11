@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
 import com.lionheart.databinding.ActivityMainBinding
+import com.lionheart.presentation.search.SearchFragment
 
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     private lateinit var navController: NavController
