@@ -18,4 +18,7 @@
     <color name="gray_800">#2D2D2D</color>
     <color name="gray_900">#262626</color>
     <color name="gray_1000">#1A1A1A</color>
+
+    <!-- kakao -->
+    <color name="kakao">#FEE500</color>
 </resources>
