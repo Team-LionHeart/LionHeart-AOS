@@ -12,14 +12,21 @@
         android:layout_height="match_parent"
         tools:context=".presentation.MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            app:labelVisibilityMode="labeled"
+            app:itemRippleColor="@color/black"
+            android:background="@color/black"
+            app:itemIconTint="@drawable/selector_menu_color"
+            app:itemTextColor="@drawable/selector_menu_color"
+            app:itemTextAppearanceActive="@style/Widget.LionHeart.BottomNavigation.Text"
+            app:itemTextAppearanceInactive="@style/Widget.LionHeart.BottomNavigation.Text"
+            app:itemActiveIndicatorStyle="@style/Widget.LionHeart.BottomNavigationView.ActiveIndicator"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:menu="@menu/menu_main" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
