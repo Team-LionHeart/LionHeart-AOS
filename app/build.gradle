@@ -22,6 +22,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String","BASE_URL",properties['base.url']
+        buildConfigField "String","KAKAO_API_KEY",properties['kakao_api_key']
+        manifestPlaceholders = [KAKAO_API_KEY:properties['kakao_api_key_manifest']]
     }
 
     buildTypes {
@@ -108,7 +110,8 @@ dependencies {
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
     implementation "com.squareup.okhttp3:okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor"
-    // kakao login
+    // kakao
+    implementation "com.kakao.sdk:v2-user:2.13.0"
     // firebase
     // coil
     implementation 'io.coil-kt:coil:2.2.2'
