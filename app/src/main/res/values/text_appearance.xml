@@ -6,4 +6,95 @@
         <item name="android:textStyle">normal</item>
         <item name="android:includeFontPadding">false</item>
     </style>
+
+    <style name="TextAppearance.LionHeart.Head1">
+        <item name="android:textSize">28sp</item>
+        <item name="android:lineHeight">36dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Head2">
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineHeight">32dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Head3">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineHeight">28dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Head4">
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineHeight">25dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.LionHeart.Subhead1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineHeight">25dp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Subhead2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">22dp</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="TextAppearance.LionHeart.Title1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">20dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Title2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">18dp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.LionHeart.Body1">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineHeight">28dp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Body2_Medium">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">24dp</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Body2_Regular">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">24dp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Body3_Medium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">22dp</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Body3_Regular">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">22dp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Body4">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight">18dp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Body5_Bold">
+        <item name="android:textSize">9sp</item>
+        <item name="android:lineHeight">12dp</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Body5_Medium">
+        <item name="android:textSize">9sp</item>
+        <item name="android:lineHeight">12dp</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="TextAppearance.LionHeart.Caption">
+        <item name="android:textSize">8sp</item>
+        <item name="android:lineHeight">12dp</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
 </resources>
