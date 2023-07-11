@@ -14,7 +14,6 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:alpha="0.4"
             android:background="@color/black" />
 
@@ -23,19 +22,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="200dp"
-
             android:src="@drawable/ic_login_logo"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_login_welcome"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginTop="12dp"
             android:gravity="center"
             android:text="하루 10분, 좋은 아빠가 되는 방법"
             android:textAppearance="@style/TextAppearance.LionHeart.Title2"
             android:textColor="@color/gray_400"
+            app:layout_constraintStart_toStartOf="@id/iv_login_welcome"
+            app:layout_constraintEnd_toEndOf="@id/iv_login_welcome"
             app:layout_constraintTop_toBottomOf="@id/iv_login_welcome" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,36 +45,32 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="60dp"
             android:background="@drawable/shape_primary_fill_0_rect"
-            app:layout_constraintBottom_toBottomOf="parent"
-            >
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="90dp"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                >
+                app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
                     android:id="@+id/tv_login_kakao"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-
                     android:gravity="center"
                     android:text="카카오로 시작하기"
                     android:textAppearance="@style/TextAppearance.LionHeart.Subhead2"
                     android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <ImageView
                     android:id="@+id/iv_login_kakao"
-                    android:layout_width="20dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:layout_constraintDimensionRatio="1"
-
                     android:src="@drawable/ic_login_kakao"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toStartOf="@id/tv_login_kakao"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
