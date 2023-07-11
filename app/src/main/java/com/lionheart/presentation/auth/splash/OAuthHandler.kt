@@ -6,6 +6,7 @@ import com.kakao.sdk.user.UserApiClient
 import com.lionheart.LionOAuthException
 
 object OAuthHandler {
+    fun existsKakaoApp(context: Context) = UserApiClient.instance.isKakaoTalkLoginAvailable(context)
     fun kakaoLoginOnApp(context: Context, onSuccess: (OAuthToken) -> Unit) {
         UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->
             if (error != null) throw LionOAuthException("카카오 로그인 중 발생한 비정상적인 에러 (detail : ${error.message})")
