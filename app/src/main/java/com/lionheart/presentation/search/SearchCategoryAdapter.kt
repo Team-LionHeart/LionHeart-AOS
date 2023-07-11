@@ -7,14 +7,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.lionheart.core.view.ItemDiffCallback
 import com.lionheart.databinding.ItemSearchCategoryBinding
+import com.lionheart.domain.entity.SearchCategory
 
-class SearchCategoryAdapter : ListAdapter<Int, SearchCategoryAdapter.SearchCategoryViewHolder>(
+class SearchCategoryAdapter : ListAdapter<SearchCategory, SearchCategoryAdapter.SearchCategoryViewHolder>(
     diffUtil,
 ) {
     class SearchCategoryViewHolder(private val binding: ItemSearchCategoryBinding) :
         ViewHolder(binding.root) {
-        fun onBind(category: Int) {
-            binding.ivSearchCategory.setImageResource(category)
+        fun onBind(category: SearchCategory) {
+            binding.ivSearchCategory.setImageResource(category.img)
+            binding.tvSearchCategoryName.text = category.name
         }
     }
 
@@ -33,7 +35,7 @@ class SearchCategoryAdapter : ListAdapter<Int, SearchCategoryAdapter.SearchCateg
     }
 
     companion object {
-        private val diffUtil = ItemDiffCallback<Int>(
+        private val diffUtil = ItemDiffCallback<SearchCategory>(
             onContentsTheSame = { old, new -> old == new },
             onItemsTheSame = { old, new -> old == new },
         )
