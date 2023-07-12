@@ -5,6 +5,7 @@ import androidx.fragment.app.viewModels
 import com.lionheart.R
 import com.lionheart.core.binding.BindingFragment
 import com.lionheart.databinding.FragmentSearchBinding
+import com.lionheart.domain.entity.SearchCategory
 import com.lionheart.presentation.search.category.SearchDetailActivity
 
 class SearchFragment : BindingFragment<FragmentSearchBinding>(R.layout.fragment_search) {
@@ -16,20 +17,26 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>(R.layout.fragment_
     }
 
     private fun initAdapter() {
-        searchCategoryAdapter = SearchCategoryAdapter { intentToSearchDetail() }
+        searchCategoryAdapter =
+            SearchCategoryAdapter { searchCategory -> intentToSearchDetail(searchCategory) }
 
         searchCategoryAdapter?.submitList(viewModel.categoryList)
 
         binding.rvSearchCategory.adapter = searchCategoryAdapter
     }
 
-    private fun intentToSearchDetail() {
+    private fun intentToSearchDetail(searchCategory: SearchCategory) {
         val intent = Intent(activity, SearchDetailActivity::class.java)
+        intent.putExtra(SEARCH_CATEGORY, searchCategory)
         startActivity(intent)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         searchCategoryAdapter = null
+    }
+
+    companion object {
+        const val SEARCH_CATEGORY = "searchCategory"
     }
 }
