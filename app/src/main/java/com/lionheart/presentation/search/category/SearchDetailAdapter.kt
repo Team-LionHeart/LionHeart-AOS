@@ -9,13 +9,25 @@ import com.lionheart.core.view.ItemDiffCallback
 import com.lionheart.databinding.ItemSearchDetailArticleBinding
 import com.lionheart.domain.entity.Article
 
-class SearchDetailAdapter :
-    ListAdapter<Article, SearchDetailAdapter.SearchDetailViewHolder>(diffUtil) {
+class SearchDetailAdapter : ListAdapter<Article, SearchDetailAdapter.SearchDetailViewHolder>(diffUtil) {
     class SearchDetailViewHolder(private val binding: ItemSearchDetailArticleBinding) :
         ViewHolder(binding.root) {
         fun onBind(data: Article) {
-            binding.data = data
-            binding.ivSearchDetailThumbnail.load(data.mainImageUrl)
+            with(binding) {
+                binding.data = data
+                ivSearchDetailThumbnail.load(data.mainImageUrl)
+                initBookmark(data)
+            }
+        }
+
+        private fun initBookmark(data: Article) {
+            with(binding) {
+                ivSearchDetailBookmark.isSelected = data.isMarked
+                ivSearchDetailBookmark.setOnClickListener {
+                    ivSearchDetailBookmark.isSelected = ivSearchDetailBookmark.isSelected.not()
+                    // 북마크 저장 작업
+                }
+            }
         }
     }
 
