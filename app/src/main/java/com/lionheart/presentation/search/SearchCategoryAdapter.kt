@@ -9,7 +9,7 @@ import com.lionheart.databinding.ItemSearchCategoryBinding
 import com.lionheart.domain.entity.SearchCategory
 
 class SearchCategoryAdapter(
-    private val onClickCategory: () -> Unit,
+    private val onClickCategory: (SearchCategory) -> Unit,
 ) : ListAdapter<SearchCategory, SearchCategoryAdapter.SearchCategoryViewHolder>(
     diffUtil,
 ) {
@@ -32,10 +32,11 @@ class SearchCategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: SearchCategoryViewHolder, position: Int) {
+        val searchCategory = getItem(position)
         holder.itemView.setOnClickListener {
-            onClickCategory()
+            onClickCategory(searchCategory)
         }
-        holder.onBind(getItem(position))
+        holder.onBind(searchCategory)
     }
 
     companion object {
