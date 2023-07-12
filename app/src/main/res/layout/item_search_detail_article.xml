@@ -52,6 +52,7 @@
                     tools:text="9분 가량" />
 
                 <ImageView
+                    android:id="@+id/iv_search_detail_bookmark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
