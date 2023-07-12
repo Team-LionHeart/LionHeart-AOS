@@ -4,7 +4,10 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
+import com.lionheart.core.intent.getParcelable
 import com.lionheart.databinding.ActivitySearchDetailBinding
+import com.lionheart.domain.entity.SearchCategory
+import com.lionheart.presentation.search.SearchFragment.Companion.SEARCH_CATEGORY
 
 class SearchDetailActivity :
     BindingActivity<ActivitySearchDetailBinding>(R.layout.activity_search_detail) {
@@ -19,11 +22,15 @@ class SearchDetailActivity :
     }
 
     private fun initAdapter() {
+        val searchCategory = intent.getParcelable(SEARCH_CATEGORY, SearchCategory::class.java)
         searchDetailAdapter = SearchDetailAdapter()
-        searchDetailTitleAdapter = SearchDetailTitleAdapter()
+        searchCategory?.let {
+            searchDetailTitleAdapter = SearchDetailTitleAdapter(it)
+        }
         getSearchDetail()
 
-        binding.rvSearchDetailArticle.adapter = ConcatAdapter(searchDetailTitleAdapter, searchDetailAdapter)
+        binding.rvSearchDetailArticle.adapter =
+            ConcatAdapter(searchDetailTitleAdapter, searchDetailAdapter)
     }
 
     private fun getSearchDetail() {
