@@ -1,6 +1,5 @@
 package com.lionheart.presentation.search
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -9,7 +8,9 @@ import com.lionheart.core.view.ItemDiffCallback
 import com.lionheart.databinding.ItemSearchCategoryBinding
 import com.lionheart.domain.entity.SearchCategory
 
-class SearchCategoryAdapter : ListAdapter<SearchCategory, SearchCategoryAdapter.SearchCategoryViewHolder>(
+class SearchCategoryAdapter(
+    private val onClickCategory: () -> Unit,
+) : ListAdapter<SearchCategory, SearchCategoryAdapter.SearchCategoryViewHolder>(
     diffUtil,
 ) {
     class SearchCategoryViewHolder(private val binding: ItemSearchCategoryBinding) :
@@ -31,6 +32,9 @@ class SearchCategoryAdapter : ListAdapter<SearchCategory, SearchCategoryAdapter.
     }
 
     override fun onBindViewHolder(holder: SearchCategoryViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            onClickCategory()
+        }
         holder.onBind(getItem(position))
     }
 
