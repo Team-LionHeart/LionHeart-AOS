@@ -9,152 +9,38 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="36dp">
+        android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_search_detail_thumbnail"
+        <ImageView
+            android:id="@+id/iv_search_detail_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_search_detail_dividing_line"
             android:layout_width="0dp"
-            android:layout_height="200dp"
-            app:cardCornerRadius="4dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/gray_1000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/iv_search_detail_back_button" />
 
-
-            <ImageView
-                android:id="@+id/iv_search_detail_thumbnail"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="0.4"
-                android:scaleType="centerCrop"
-                tools:src="@drawable/ic_search_budget" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:alpha="0.6"
-                android:background="@color/black">
-
-                <TextView
-                    style="@style/TextAppearance.LionHeart.Body4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:textColor="@color/gray_500"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="9분 가량" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/selector_search_detail_bookmark"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/tv_search_detail_tag1"
-            style="@style/TextAppearance.LionHeart.Body4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/gray_400"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_search_detail_article"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_search_detail_thumbnail"
-            tools:text="신체 변화" />
-
-        <TextView
-            android:id="@+id/tv_search_detail_dot1"
-            style="@style/TextAppearance.LionHeart.Body4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="·"
-            android:textColor="@color/gray_400"
-            app:layout_constraintBottom_toBottomOf="@id/tv_search_detail_tag1"
-            app:layout_constraintEnd_toStartOf="@id/tv_search_detail_tag2"
-            app:layout_constraintStart_toEndOf="@id/tv_search_detail_tag1"
-            app:layout_constraintTop_toTopOf="@id/tv_search_detail_tag1" />
-
-        <TextView
-            android:id="@+id/tv_search_detail_tag2"
-            style="@style/TextAppearance.LionHeart.Body4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/gray_400"
-            app:layout_constraintStart_toEndOf="@id/tv_search_detail_dot1"
-            app:layout_constraintTop_toBottomOf="@id/cv_search_detail_thumbnail"
-            tools:text="신체 변화" />
-
-        <TextView
-            android:id="@+id/tv_search_detail_dot2"
-            style="@style/TextAppearance.LionHeart.Body4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="·"
-            android:textColor="@color/gray_400"
-            app:layout_constraintBottom_toBottomOf="@id/tv_search_detail_tag2"
-            app:layout_constraintEnd_toStartOf="@id/tv_search_detail_tag3"
-            app:layout_constraintStart_toEndOf="@id/tv_search_detail_tag2"
-            app:layout_constraintTop_toTopOf="@id/tv_search_detail_tag2" />
-
-        <TextView
-            android:id="@+id/tv_search_detail_tag3"
-            style="@style/TextAppearance.LionHeart.Body4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/gray_400"
-            app:layout_constraintStart_toEndOf="@id/tv_search_detail_dot2"
-            app:layout_constraintTop_toBottomOf="@id/cv_search_detail_thumbnail"
-            tools:text="신체 변화" />
-
-        <TextView
-            android:id="@+id/tv_search_detail_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextAppearance.LionHeart.Body4"
-            android:textColor="@color/gray_600"
-            tools:text="2023.06.21"
+            app:layout_constraintTop_toBottomOf="@id/view_search_detail_dividing_line"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_search_detail_thumbnail"
-            android:layout_marginTop="16dp"/>
-
-        <TextView
-            android:id="@+id/tv_search_detail_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextAppearance.LionHeart.Head3"
-            android:textColor="@color/white"
-            tools:text="육아카드 만들기 A-Z"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_search_detail_tag1"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="본문이 미리보기로 들어가는 걸로 이해했는데 맞을까요? 젖병을 잘못 구매하면, 배앓이를 한다는 말 들어보셨나요? 오늘은 신생아에게 가장 중요한 젖병 이야기를 들려드릴게요."
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_search_detail_title"
-            android:layout_marginTop="8dp"
-            style="@style/TextAppearance.LionHeart.Body3_Regular"
-            android:textColor="@color/gray_300"
-            android:ellipsize="end"
-            android:maxLines="2"/>
+            tools:listitem="@layout/item_search_detail_article"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
