@@ -10,4 +10,4 @@ data class SearchCategory(
     val serverName: String,
     val mainTitle: String,
     val subTitle: String,
-): Parcelable
+) : Parcelable
