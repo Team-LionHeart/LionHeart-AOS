@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="36dp">
+
+        <TextView
+            android:id="@+id/tv_article_general_title_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="출산카드? 임신바우처를 알려드려요."
+            android:textAppearance="@style/TextAppearance.LionHeart.Head3"
+            android:textColor="@color/gray_900"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
