@@ -46,4 +46,5 @@
     <string name="search_header_title">탐색</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="course_weekly_title">%s주차 커리큘럼</string>
 </resources>
