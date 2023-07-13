@@ -1,14 +1,9 @@
 package com.lionheart.domain.entity
 
-sealed class CourseWeeklyData {
-    data class Month(
-        val month: Int
-    ) : CourseWeeklyData()
-
-    data class Week(
-        val week: Int,
-        val title: String,
-        val image: Int,
-        val content: String
-    ) : CourseWeeklyData()
-}
+data class CourseWeeklyData (
+    val month: Int? = null,
+    val week: Int? = null,
+    val title: String? = null,
+    val image: Int? = null,
+    val content: String? = null
+)
