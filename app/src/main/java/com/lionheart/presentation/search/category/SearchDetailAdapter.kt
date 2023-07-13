@@ -1,5 +1,6 @@
 package com.lionheart.presentation.search.category
 
+import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -10,20 +11,23 @@ import com.lionheart.databinding.ItemSearchDetailArticleBinding
 import com.lionheart.domain.entity.Article
 
 class SearchDetailAdapter : ListAdapter<Article, SearchDetailAdapter.SearchDetailViewHolder>(diffUtil) {
+    private val bookmarkStatus = SparseBooleanArray()
     class SearchDetailViewHolder(private val binding: ItemSearchDetailArticleBinding) :
         ViewHolder(binding.root) {
-        fun onBind(data: Article) {
+        fun onBind(data: Article, bookmarkStatus: SparseBooleanArray) {
             with(binding) {
                 binding.data = data
                 ivSearchDetailThumbnail.load(data.mainImageUrl)
-                initBookmark(data)
+                bookmarkStatus.put(position, data.isMarked)
+                initBookmark(data, bookmarkStatus)
             }
         }
 
-        private fun initBookmark(data: Article) {
+        private fun initBookmark(data: Article, bookmarkStatus: SparseBooleanArray) {
             with(binding) {
                 ivSearchDetailBookmark.isSelected = data.isMarked
                 ivSearchDetailBookmark.setOnClickListener {
+                    bookmarkStatus.put(position, ivSearchDetailBookmark.isSelected)
                     ivSearchDetailBookmark.isSelected = ivSearchDetailBookmark.isSelected.not()
                     // 북마크 저장 작업
                 }
@@ -42,7 +46,7 @@ class SearchDetailAdapter : ListAdapter<Article, SearchDetailAdapter.SearchDetai
     }
 
     override fun onBindViewHolder(holder: SearchDetailViewHolder, position: Int) {
-        holder.onBind(getItem(position))
+        holder.onBind(getItem(position), bookmarkStatus)
     }
 
     companion object {
