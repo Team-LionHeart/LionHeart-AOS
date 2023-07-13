@@ -34,7 +34,6 @@
                     android:id="@+id/layout_course_thumbnail_fixed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="17dp"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
@@ -71,13 +70,20 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_content" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_course_thumbnail_hidden"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="36dp"
                     app:layout_constraintTop_toBottomOf="@id/layout_course_thumbnail_fixed">
 
                     <ImageView
@@ -113,6 +119,14 @@
                         android:textColor="@color/gray_500"
                         app:layout_constraintTop_toBottomOf="@id/iv_thumbnail"
                         tools:text="4주차에는 처음 부모가 된 예비 아빠들을 위해 출산의 전반적인 로드맵을 다룰 예정이에요. 개인병원과 종합병원 중 어떤 곳을 선택해야 할까요? 출산 예정일은 어떻게 계산할까요? 개인병원과 종합병원 중 어떤 곳을 선택해야 할까요? 출산 예정일은 어떻게 계산할까요? 아빠가 되기 위한 첫 걸음을 함께해보세요." />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="0dp"
+                        android:layout_marginTop="36dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/tv_content_detail"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

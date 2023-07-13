@@ -16,6 +16,7 @@
         <item name="android:statusBarColor">?android:colorBackground</item>
         <!-- etc -->
         <item name="materialButtonStyle">@style/Widget.LionHeart.Button</item>
+        <item name="materialDividerStyle">@style/Widget.LionHeart.Divider</item>
     </style>
 
     <style name="Theme.LionHeart" parent="Base.Theme.LionHeart" />

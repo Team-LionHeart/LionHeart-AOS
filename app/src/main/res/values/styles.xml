@@ -19,4 +19,9 @@
     <style name="Widget.LionHeart.BottomNavigationView.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/black</item>
     </style>
+
+    <style name="Widget.LionHeart.Divider" parent="Widget.Material3.MaterialDivider">
+        <item name="dividerColor">@color/gray_800</item>
+    </style>
+
 </resources>
