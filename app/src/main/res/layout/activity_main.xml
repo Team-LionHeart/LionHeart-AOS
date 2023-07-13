@@ -13,7 +13,7 @@
         tools:context=".presentation.MainActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_search_header"
+            android:id="@+id/layout_main_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -21,6 +21,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/tv_main_top"
                 style="@style/TextAppearance.LionHeart.Head4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,17 +33,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/iv_search_bookmark"
+                android:id="@+id/iv_main_bookmark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="7dp"
                 android:src="@drawable/ic_search_header_bookmark"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/iv_search_mypage"
+                app:layout_constraintEnd_toStartOf="@id/iv_main_mypage"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/iv_search_mypage"
+                android:id="@+id/iv_main_mypage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="19dp"
@@ -60,7 +61,7 @@
             android:layout_height="0dp"
             app:defaultNavHost="true"
             app:layout_constraintBottom_toTopOf="@+id/bnv_main"
-            app:layout_constraintTop_toBottomOf="@id/layout_search_header"
+            app:layout_constraintTop_toBottomOf="@id/layout_main_header"
             app:navGraph="@navigation/nav_graph" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
