@@ -21,6 +21,12 @@ class SearchDetailActivity :
         initAdapter()
     }
 
+    override fun addListeners() {
+        super.addListeners()
+
+        onClickBackButton()
+    }
+
     private fun initAdapter() {
         val searchCategory = intent.getParcelable(SEARCH_CATEGORY, SearchCategory::class.java)
         searchDetailAdapter = SearchDetailAdapter()
@@ -35,5 +41,11 @@ class SearchDetailActivity :
 
     private fun getSearchDetail() {
         searchDetailAdapter?.submitList(viewModel.mockArticleList)
+    }
+
+    private fun onClickBackButton() {
+        binding.ivSearchDetailBackButton.setOnClickListener {
+            if (!isFinishing) finish()
+        }
     }
 }
