@@ -1,9 +1,19 @@
 package com.lionheart.presentation.course
 
+import android.content.Context
+import android.content.res.Resources
+import android.graphics.Color
+import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.AutoTransition
+import androidx.transition.Slide
+import androidx.transition.TransitionManager
+import com.lionheart.R
 import com.lionheart.core.view.ItemDiffCallback
 import com.lionheart.databinding.ItemCourseMonthBinding
 import com.lionheart.databinding.ItemCourseWeekBinding
@@ -71,5 +81,18 @@ class CourseWeekViewHolder(private val binding: ItemCourseWeekBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun onBind(data: CourseWeeklyData) {
         binding.data = data
+        binding.btnDownArrow.setOnClickListener {
+            if (binding.layoutCourseThumbnailHidden.visibility == View.VISIBLE) {
+//                TransitionManager.beginDelayedTransition(binding.cardCourseThumbnail, Slide())
+                binding.layoutCourseThumbnailHidden.visibility = View.GONE
+                binding.tvWeek.setTextColor(Color.parseColor("#8E8E8E"))
+                binding.btnDownArrow.setImageResource(R.drawable.ic_course_arrow_down)
+            } else {
+//                TransitionManager.beginDelayedTransition(binding.cardCourseThumbnail, Slide(Gravity.TOP))
+                binding.layoutCourseThumbnailHidden.visibility = View.VISIBLE
+                binding.tvWeek.setTextColor(Color.parseColor("#FF2D64"))
+                binding.btnDownArrow.setImageResource(R.drawable.ic_course_arrow_up)
+            }
+        }
     }
 }

@@ -56,13 +56,13 @@
                         android:text="@{data.title}"
                         android:textAppearance="@style/TextAppearance.LionHeart.Body3_Medium"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/iv_down_arrow"
+                        app:layout_constraintEnd_toStartOf="@id/btn_down_arrow"
                         app:layout_constraintStart_toEndOf="@id/tv_week"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="소리를 듣기 시작한 아기에게 들려주는 아빠 목소리" />
 
                     <ImageView
-                        android:id="@+id/iv_down_arrow"
+                        android:id="@+id/btn_down_arrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_course_arrow_down"
@@ -82,6 +82,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_course_thumbnail_hidden"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/layout_course_thumbnail_fixed">
