@@ -12,7 +12,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class WeeklyCourseViewModel @Inject constructor(
+class CourseWeeklyViewModel @Inject constructor(
     private val lionRepository: LionRepository
 ) : ViewModel() {
     private val _exampleData = MutableLiveData<Lion>()
