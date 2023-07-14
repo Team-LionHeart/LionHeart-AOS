@@ -4,23 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="component"
+            type="com.lionheart.domain.entity.ArticleComponent" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:paddingBottom="40dp">
 
         <TextView
-            android:id="@+id/tv_article_chaptor_title"
+            android:id="@+id/tv_article_chapter_title_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Chater 1.\n아빠가 되는 시작,\n임신바우처 신청의 모든 것이\n궁금한 당신께"
             android:textAlignment="textStart"
-            android:textColor="@color/gray_900"
             android:textAppearance="@style/TextAppearance.LionHeart.Head2"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/gray_900"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{component.content}"
+            tools:text="Chater 1.\n아빠가 되는 시작,\n임신바우처 신청의 모든 것이\n궁금한 당신께" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

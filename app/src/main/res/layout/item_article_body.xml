@@ -1,28 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="component"
+            type="com.lionheart.domain.entity.ArticleComponent" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_article_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
-        
+        android:background="@color/white"
+        android:paddingBottom="72dp">
+
         <TextView
+            android:paddingHorizontal="20dp"
+            android:id="@+id/tv_article_body_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="농담처럼 이런 이야기를 들어보신 적 있으신가요?
-임신을 확인한 순간 가장 먼저 해야 할 일, 주변에 알리는 것보다 먼저 임신바우처 신청을 하라는 이야기가 있어요.\n\n
-임신 혜택 중 하나로 임신,출산 진료비 지원 신청을 하면 지원금을 받게 되는데요. 병원 진료비와 약값이 만만치 않은데 바우처 덕분에 임신 기간 동안 나름 유용하게 사용했던 혜택이 아닐까 싶어요.\n\n
-임신 1회당 단태아는 100만원, 다태아는 140만원의 금액을 지원받을 수 있다는 사실! 지금부터 라이온하트와 함께 알아볼까요?"
             android:textAppearance="@style/TextAppearance.LionHeart.Body2_Regular"
             android:textColor="@color/gray_900"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            android:text="@{component.content}"
+            tools:text="농담처럼 이런 이야기를 들어보신 적 있으신가요?
+임신을 확인한 순간 가장 먼저 해야 할 일, 주변에 알리는 것보다 먼저 임신바우처 신청을 하라는 이야기가 있어요.\n\n
+임신 혜택 중 하나로 임신,출산 진료비 지원 신청을 하면 지원금을 받게 되는데요. 병원 진료비와 약값이 만만치 않은데 바우처 덕분에 임신 기간 동안 나름 유용하게 사용했던 혜택이 아닐까 싶어요.\n\n
+임신 1회당 단태아는 100만원, 다태아는 140만원의 금액을 지원받을 수 있다는 사실! 지금부터 라이온하트와 함께 알아볼까요?" />
 
+        <TextView
+            android:paddingHorizontal="20dp"
+            android:id="@+id/tv_article_body_caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="32dp"
+            android:textAppearance="@style/TextAppearance.LionHeart.Body3_Regular"
+            android:textColor="@color/gray_500"
+            android:text="@{component.caption}"
+            app:layout_constraintTop_toBottomOf="@id/tv_article_body_content"
+            tools:text="* 2023년 7월을 기준으로 총 4개 카드사에서 발급받을 수 있어요!" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

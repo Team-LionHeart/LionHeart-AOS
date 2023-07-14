@@ -4,14 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="component"
+            type="com.lionheart.domain.entity.ArticleComponent" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:paddingBottom="36dp">
+        android:paddingBottom="36dp"
+        android:paddingHorizontal="20dp">
 
         <TextView
             android:id="@+id/tv_article_general_title_content"
@@ -20,6 +23,7 @@
             tools:text="출산카드? 임신바우처를 알려드려요."
             android:textAppearance="@style/TextAppearance.LionHeart.Head3"
             android:textColor="@color/gray_900"
+            android:text="@{component.content}"
             app:layout_constraintTop_toTopOf="parent"
             />
 
