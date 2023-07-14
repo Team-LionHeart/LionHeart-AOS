@@ -5,11 +5,17 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.lionheart.domain.entity.Article" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
         android:paddingBottom="36dp">
 
         <androidx.cardview.widget.CardView
@@ -27,6 +33,7 @@
 
                 <ImageView
                     android:id="@+id/iv_course_weekly_thumbnail"
+                    imageUrl="@{data.mainImageUrl}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -58,6 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:text="@{@string/course_weekly_read_time(data.requiredTime)}"
                         android:textAppearance="@style/TextAppearance.LionHeart.Body4"
                         android:textColor="@color/gray_500"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -84,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:text="@{@string/course_weekly_tag(data.tags[0], data.tags[1], data.tags[2])}"
             android:textAppearance="@style/TextAppearance.LionHeart.Body4"
             android:textColor="@color/gray_400"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.LionHeart.Body4"
+            android:text="2023.07.14"
             android:textColor="@color/gray_600"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_course_weekly_thumbnail_tag"
@@ -106,6 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:text="@{data.title}"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_course_weekly_thumbnail_tag"
@@ -118,6 +129,7 @@
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="2"
+            android:text="@{data.firstBodyContent}"
             android:textAppearance="@style/TextAppearance.LionHeart.Body3_Regular"
             android:textColor="@color/gray_300"
             app:layout_constraintEnd_toEndOf="parent"
