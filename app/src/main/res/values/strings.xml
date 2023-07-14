@@ -47,4 +47,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="course_weekly_title">%s주차 커리큘럼</string>
+    <string name="course_week">%s주차</string>
+    <string name="course_weekly_read_time">%s분 분량</string>
+    <string name="course_weekly_tag">%1$s · %2$s · %3$s</string>
 </resources>
