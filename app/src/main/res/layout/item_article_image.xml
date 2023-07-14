@@ -4,20 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="component"
+            type="com.lionheart.domain.entity.ArticleComponent" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="72dp">
 
         <ImageView
             android:id="@+id/iv_article_image"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:scaleType="centerCrop"
+            app:imageUrl="@{component.content}"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/img_article_example" />
+            tools:src="@drawable/img_article_main_example"/>
         <TextView
             android:id="@+id/tv_article_image_caption"
             android:layout_marginTop="12dp"
@@ -27,6 +32,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_article_image"
             android:textAppearance="@style/TextAppearance.LionHeart.Body4"
+            android:text="@{component.caption}"
+            android:textColor="@color/gray_900"
             tools:text="임신 바우처 신청 모습 copyright/ unsplash"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
