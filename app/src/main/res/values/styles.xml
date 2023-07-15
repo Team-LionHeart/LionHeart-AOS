@@ -4,6 +4,7 @@
     <style name="Widget.LionHeart.Button" parent="Widget.Material3.Button">
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">0dp</item>
     </style>
 
     <style name="Widget.LionHeart.BottomNavigation.Text.Active" parent="Widget.Design.BottomNavigationView">
