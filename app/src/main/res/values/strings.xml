@@ -13,6 +13,7 @@
     <string name="course_weekly_tag">%1$s · %2$s · %3$s</string>
     <string name="challenge_babyNickname">%s아빠님,</string>
     <string name="challenge_day">%s일째 도전 중</string>
+    <string name="onboarding_register_done">%s아빠님\n반가워요!</string>
     <string name="search_detail_required_time">%s분 분량</string>
 
     <!-- bookmark -->
