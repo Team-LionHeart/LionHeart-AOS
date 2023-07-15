@@ -19,15 +19,9 @@ class ArticleAdaptor : ListAdapter<ArticleComponent, ArticleViewHolder>(ItemDiff
     onItemsTheSame = { old, new -> old == new },
     onContentsTheSame = { old, new -> old == new }
 )) {
-    private lateinit var components: MutableList<ArticleComponent>
     private lateinit var inflater: LayoutInflater
 
-    override fun getItemViewType(position: Int): Int = components[position].type
-
-    override fun submitList(list: MutableList<ArticleComponent>?) {
-        super.submitList(list)
-        this.components = list ?: mutableListOf()
-    }
+    override fun getItemViewType(position: Int): Int = getItem(position).type
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         inflater = parent.context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -88,7 +82,7 @@ class ArticleAdaptor : ListAdapter<ArticleComponent, ArticleViewHolder>(ItemDiff
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        holder.onBind(components[position])
+        holder.onBind(getItem(position))
     }
 
     private fun layoutInflaterFromParent(context: Context) = LayoutInflater.from(context)
