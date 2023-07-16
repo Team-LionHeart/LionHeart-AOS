@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="data"
+            type="com.lionheart.domain.entity.Challenge" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,10 +15,135 @@
         android:layout_height="match_parent"
         tools:context=".presentation.challenge.ChallengeFragment">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="이거슨 챌린지뷰" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_challenge_dad_name"
+                    style="@style/TextAppearance.LionHeart.Body2_Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:text="@{@string/challenge_babyNickname(data.babyNickname)}"
+                    android:textColor="@color/gray_200"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="사랑이 아빠님," />
+
+                <TextView
+                    android:id="@+id/tv_challenge_challenge_day"
+                    style="@style/TextAppearance.LionHeart.Head3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/challenge_day(data.day)}"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_challenge_dad_name"
+                    tools:text="1일째 도전 중" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_challenge_gradient_line"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_challenge_challenge_day"
+                    app:layout_constraintEnd_toStartOf="@id/tv_challenge_challenge_day"
+                    app:layout_constraintTop_toTopOf="@id/tv_challenge_challenge_day" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:rotation="180"
+                    android:src="@drawable/ic_challenge_gradient_line"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_challenge_challenge_day"
+                    app:layout_constraintStart_toEndOf="@id/tv_challenge_challenge_day"
+                    app:layout_constraintTop_toTopOf="@id/tv_challenge_challenge_day" />
+
+                <ImageView
+                    android:id="@+id/iv_challenge_badge"
+                    android:layout_width="138dp"
+                    android:layout_height="154dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_challenge_level_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_challenge_challenge_day" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="@id/iv_challenge_badge"
+                    app:layout_constraintStart_toStartOf="@id/iv_challenge_badge"
+                    app:layout_constraintTop_toTopOf="@id/iv_challenge_badge">
+
+                    <TextView
+                        android:id="@+id/tv_challenge_lion_power"
+                        style="@style/TextAppearance.LionHeart.Body4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="사자력"
+                        android:textColor="@color/gray_500"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_challenge_level"
+                        style="@style/TextAppearance.LionHeart.Body4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tv_challenge_lion_power"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Lv.1" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottie_challenge_progressbar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_challenge_badge"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="false" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_challenge_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:paddingTop="28dp"
+                    android:paddingBottom="30dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lottie_challenge_progressbar"
+                    app:spanCount="5"
+                    tools:listitem="@layout/item_challenge_attendance" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
