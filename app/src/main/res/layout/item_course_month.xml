@@ -8,7 +8,7 @@
 
         <variable
             name="data"
-            type="com.lionheart.domain.entity.CourseWeeklyData" />
+            type="com.lionheart.domain.entity.MonthlyCourse.MonthlyCourseData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
