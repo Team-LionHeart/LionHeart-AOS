@@ -17,8 +17,8 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.course.CourseWeeklyActivity"
-            android:exported="false" />
+            android:name=".presentation.course.CourseDetailActivity"
+            android:exported="true" />
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true"

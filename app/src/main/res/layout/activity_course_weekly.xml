@@ -9,13 +9,13 @@
 
         <variable
             name="vm"
-            type="com.lionheart.presentation.course.CourseWeeklyViewModel" />
+            type="com.lionheart.presentation.course.CourseDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.course.CourseWeeklyActivity">
+        tools:context=".presentation.course.CourseDetailActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_course_weekly_toolbar"
