@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,8 +55,11 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:fontFamily="@font/pretendard_semibold"
+                android:gravity="end"
                 android:hint="1~40"
+                android:inputType="number"
                 android:lineHeight="28dp"
+                android:maxLength="3"
                 android:textSize="24sp" />
 
             <requestFocus />
