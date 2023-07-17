@@ -16,14 +16,10 @@ class SearchDetailActivity :
     private var searchDetailTitleAdapter: SearchDetailTitleAdapter? = null
 
     override fun constructLayout() {
-        super.constructLayout()
-
         initAdapter()
     }
 
     override fun addListeners() {
-        super.addListeners()
-
         onClickBackButton()
     }
 
