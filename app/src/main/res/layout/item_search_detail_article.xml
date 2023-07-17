@@ -25,14 +25,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <ImageView
                 android:id="@+id/iv_search_detail_thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.4"
                 android:scaleType="centerCrop"
                 tools:src="@drawable/ic_search_budget" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:alpha="0.4"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -71,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{data.tags[0]}"
+            android:text="@{@string/search_detail_tag(data.tags[0], data.tags[1], data.tags[2])}"
             android:textColor="@color/gray_400"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cv_search_detail_thumbnail"
