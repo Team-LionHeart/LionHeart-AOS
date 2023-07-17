@@ -1,0 +1,12 @@
+package com.lionheart.presentation.search.category
+
+enum class ArticleCategory(val category: String) {
+    BUDGET("BUDGET"),
+    PHYSICAL_CHANGE("PHYSICAL_CHANGE"),
+    MARITAL_RELATIONSHIP("MARITAL_RELATIONSHIP"),
+    HOSPITAL_INFORMATION("HOSPITAL_INFORMATION"),
+    SUPPORT_SYSTEM("SUPPORT_SYSTEM"),
+    PRENATAL_EDUCATION("PRENATAL_EDUCATION"),
+    BABY_GOODS("BABY_GOODS"),
+    DAD_TIPS("DAD_TIPS"),
+}
