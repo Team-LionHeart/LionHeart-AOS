@@ -18,7 +18,7 @@ class SearchDetailAdapter :
         ViewHolder(binding.root) {
         fun onBind(data: Article, bookmarkStatus: SparseBooleanArray) {
             binding.data = data
-            ivSearchDetailThumbnail.load(data.mainImageUrl)
+            binding.ivSearchDetailThumbnail.load(data.mainImageUrl)
             bookmarkStatus.put(position, data.isMarked)
             initBookmark(data, bookmarkStatus)
         }
