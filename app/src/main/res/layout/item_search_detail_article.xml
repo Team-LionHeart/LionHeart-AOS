@@ -82,58 +82,6 @@
             tools:text="신체 변화" />
 
         <TextView
-            android:id="@+id/tv_search_detail_dot1"
-            style="@style/TextAppearance.LionHeart.Body4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="·"
-            android:textColor="@color/gray_400"
-            app:layout_constraintBottom_toBottomOf="@id/tv_search_detail_tag1"
-            app:layout_constraintEnd_toStartOf="@id/tv_search_detail_tag2"
-            app:layout_constraintStart_toEndOf="@id/tv_search_detail_tag1"
-            app:layout_constraintTop_toTopOf="@id/tv_search_detail_tag1" />
-
-        <TextView
-            android:id="@+id/tv_search_detail_tag2"
-            style="@style/TextAppearance.LionHeart.Body4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:text="@{data.tags[1]}"
-            android:textColor="@color/gray_400"
-            app:layout_constraintStart_toEndOf="@id/tv_search_detail_dot1"
-            app:layout_constraintTop_toBottomOf="@id/cv_search_detail_thumbnail"
-            tools:text="신체 변화" />
-
-        <TextView
-            android:id="@+id/tv_search_detail_dot2"
-            style="@style/TextAppearance.LionHeart.Body4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="·"
-            android:textColor="@color/gray_400"
-            app:layout_constraintBottom_toBottomOf="@id/tv_search_detail_tag2"
-            app:layout_constraintEnd_toStartOf="@id/tv_search_detail_tag3"
-            app:layout_constraintStart_toEndOf="@id/tv_search_detail_tag2"
-            app:layout_constraintTop_toTopOf="@id/tv_search_detail_tag2" />
-
-        <TextView
-            android:id="@+id/tv_search_detail_tag3"
-            style="@style/TextAppearance.LionHeart.Body4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:text="@{data.tags[2]}"
-            android:textColor="@color/gray_400"
-            app:layout_constraintStart_toEndOf="@id/tv_search_detail_dot2"
-            app:layout_constraintTop_toBottomOf="@id/cv_search_detail_thumbnail"
-            tools:text="신체 변화" />
-
-        <TextView
             android:id="@+id/tv_search_detail_title"
             style="@style/TextAppearance.LionHeart.Head3"
             android:layout_width="wrap_content"
