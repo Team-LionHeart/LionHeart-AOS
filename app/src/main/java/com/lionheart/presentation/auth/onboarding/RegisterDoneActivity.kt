@@ -10,7 +10,9 @@ class RegisterDoneActivity :
     BindingActivity<ActivityRegisterDoneBinding>(R.layout.activity_register_done) {
     override fun addListeners() {
         binding.btnRegisterDone.setOnClickListener {
-            Intent(this, MainActivity::class.java).run(::startActivity)
+            Intent(this, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }.run(::startActivity)
         }
     }
 }

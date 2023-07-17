@@ -5,6 +5,11 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.lionheart.presentation.auth.onboarding.OnboardingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +32,7 @@
                 android:layout_width="28dp"
                 android:layout_height="0dp"
                 android:src="@color/gray_800"
+                android:tag="@{vm.step}"
                 app:layout_constraintDimensionRatio="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -46,22 +52,27 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fcv_onboarding"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@id/btn_onboarding_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_onboarding_toolbar" />
+            app:layout_constraintTop_toBottomOf="@id/layout_onboarding_toolbar"
+            app:navGraph="@navigation/onboarding_nav_graph" />
 
         <Button
             android:id="@+id/btn_onboarding_next"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:paddingVertical="14dp"
+            android:tag="@{vm.step}"
             android:text="다음"
-            android:visibility="gone"
+            android:textAppearance="@style/TextAppearance.LionHeart.Subhead2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:visibility="visible" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
