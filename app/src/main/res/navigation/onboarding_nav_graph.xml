@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_nav_graph"
+    app:startDestination="@id/pregnant_week_fragment">
+
+    <fragment
+        android:id="@+id/pregnant_week_fragment"
+        android:name="com.lionheart.presentation.auth.onboarding.PregnantWeekFragment"
+        android:label="pregnant_week_fragment"
+        tools:layout="@layout/fragment_pregnant_week" >
+        <action
+            android:id="@+id/action_pregnant_week_fragment_to_baby_name_fragment"
+            app:destination="@id/baby_name_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/baby_name_fragment"
+        android:name="com.lionheart.presentation.auth.onboarding.BabyNameFragment"
+        android:label="baby_name_fragment"
+        tools:layout="@layout/fragment_baby_name" >
+        <action
+            android:id="@+id/action_baby_name_fragment_to_pregnant_week_fragment"
+            app:destination="@id/pregnant_week_fragment" />
+    </fragment>
+
+</navigation>
