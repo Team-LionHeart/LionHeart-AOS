@@ -26,8 +26,9 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>(R.layout.fragment_
     }
 
     private fun intentToSearchDetail(searchCategory: SearchCategory) {
-        val intent = Intent(activity, SearchDetailActivity::class.java)
-        intent.putExtra(SEARCH_CATEGORY, searchCategory)
+        val intent = Intent(activity, SearchDetailActivity::class.java).apply {
+            putExtra(SEARCH_CATEGORY, searchCategory)
+        }
         startActivity(intent)
     }
 
