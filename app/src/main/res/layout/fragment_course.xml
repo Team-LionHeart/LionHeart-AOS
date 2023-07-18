@@ -101,21 +101,27 @@
             app:layout_constraintStart_toStartOf="@id/lottie_course_progress"
             app:layout_constraintTop_toTopOf="@id/lottie_course_progress">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_course_dday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.16" />
 
-        <TextView
-            android:id="@+id/tv_course_dday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:fontFamily="@font/pretendard_light"
-            android:lineHeight="22dp"
-            android:text="D-126"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/lottie_course_progress"
-            app:layout_constraintStart_toStartOf="@id/lottie_course_progress"
-            app:layout_constraintTop_toTopOf="@id/lottie_course_progress"
-            tools:text="D-126" />
+            <TextView
+                android:id="@+id/tv_course_dday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard_light"
+                android:lineHeight="22dp"
+                android:text="D-126"
+                android:textSize="14sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline_course_dday"
+                tools:text="D-126" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_course_content"
