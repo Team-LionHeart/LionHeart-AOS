@@ -3,6 +3,7 @@ package com.lionheart.presentation.auth.onboarding
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Button
 import androidx.fragment.app.viewModels
 import com.lionheart.R
 import com.lionheart.core.binding.BindingFragment
@@ -30,6 +31,11 @@ class BabyNameFragment : BindingFragment<FragmentBabyNameBinding>(R.layout.fragm
             override fun afterTextChanged(s: Editable?) {
                 binding.tvBabyNameWarning.visibility = View.VISIBLE
                 binding.btnBabyNameClear.visibility = View.VISIBLE
+                if (viewModel.isValidName.value == true) {
+                    activity!!.findViewById<Button>(R.id.btn_onboarding_next).visibility = View.VISIBLE
+                } else {
+                    activity!!.findViewById<Button>(R.id.btn_onboarding_next).visibility = View.GONE
+                }
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
