@@ -58,6 +58,10 @@ class BookMarkActivity : BindingActivity<ActivityBookmarkBinding>(R.layout.activ
         checkBookmarkListEmpty()
     }
 
+    override fun addListeners() {
+        onClickBackButton()
+    }
+
     private fun initAdapter() {
         bookmarkTitleAdapter = BookmarkTitleAdapter()
         bookmarkArticleAdapter = BookmarkArticleAdapter()
@@ -71,6 +75,12 @@ class BookMarkActivity : BindingActivity<ActivityBookmarkBinding>(R.layout.activ
     private fun checkBookmarkListEmpty() {
         if (bookmarkList.articleSummaries.isEmpty()) {
             binding.tvBookmarkEmptyBookmarkList.visibility = View.VISIBLE
+        }
+    }
+
+    private fun onClickBackButton() {
+        binding.ivBookmarkBackButton.setOnClickListener {
+            if (!isFinishing) finish()
         }
     }
 }
