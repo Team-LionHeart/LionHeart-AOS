@@ -22,6 +22,7 @@ class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_
         }
         initRecyclerView()
         viewModel.setData()
+        binding.lottieCourseProgress.setAnimation(R.raw.progressbar_7m)
     }
 
     private fun initRecyclerView() {
