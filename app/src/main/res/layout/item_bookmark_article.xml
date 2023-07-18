@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.lionheart.domain.entity.BookmarkArticle.ArticleSummary" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_bookmark_thumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="125dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{data.mainImageUrl}"
+                tools:src="@drawable/ic_search_budget" />
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/iv_bookmark_bookmark_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/selector_bookmark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_bookmark_title"
+            style="@style/TextAppearance.LionHeart.Title2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="4dp"
+            android:text="@{data.title}"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/iv_bookmark_bookmark_button"
+            app:layout_constraintStart_toEndOf="@id/cv_bookmark_thumbnail"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="초음파 검사가 어렵다면? 초음파 검사의 모든 것" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{@string/article_tags(data.tags[0], data.tags[1], data.tags[2])}"
+            style="@style/TextAppearance.LionHeart.Body4"
+            android:textColor="@color/gray_500"
+            app:layout_constraintStart_toStartOf="@id/tv_bookmark_title"
+            app:layout_constraintEnd_toEndOf="@id/tv_bookmark_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_bookmark_title"
+            android:layout_marginTop="8dp"
+            tools:text="hi · hello · bye" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/gray_800"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_bookmark_thumbnail"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
