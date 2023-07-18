@@ -18,6 +18,8 @@
     <color name="gray_800">#2D2D2D</color>
     <color name="gray_900">#262626</color>
     <color name="gray_1000">#1A1A1A</color>
+    <color name="gray_opacity_0">#00000000</color>
+    <color name="black_opacity_20">#33000000</color>
 
     <!-- kakao -->
     <color name="kakao">#FEE500</color>
