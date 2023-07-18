@@ -21,30 +21,10 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
             android:paddingTop="24dp"
-            android:paddingBottom="32dp"
+            android:paddingBottom="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tv_course_now"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Now"
-                android:textAppearance="@style/TextAppearance.LionHeart.Body2_Regular"
-                android:textColor="?colorPrimary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_course_who"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="사랑이 아빠님은"
-                android:textAppearance="@style/TextAppearance.LionHeart.Head3"
-                app:layout_constraintStart_toStartOf="@id/tv_course_now"
-                app:layout_constraintTop_toBottomOf="@id/tv_course_now" />
 
             <TextView
                 android:id="@+id/tv_course_user_week"
@@ -54,14 +34,14 @@
                 android:paddingHorizontal="4dp"
                 android:paddingVertical="2dp"
                 android:text="27"
-                android:textAppearance="@style/TextAppearance.LionHeart.Head1" />
+                android:textAppearance="@style/TextAppearance.LionHeart.Head3" />
 
             <TextView
                 android:id="@+id/tv_course_user_week_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="주"
-                android:textAppearance="@style/TextAppearance.LionHeart.Head1" />
+                android:textAppearance="@style/TextAppearance.LionHeart.Head3" />
 
             <TextView
                 android:id="@+id/tv_course_user_day"
@@ -71,14 +51,14 @@
                 android:paddingHorizontal="4dp"
                 android:paddingVertical="2dp"
                 android:text="2"
-                android:textAppearance="@style/TextAppearance.LionHeart.Head1" />
+                android:textAppearance="@style/TextAppearance.LionHeart.Head3" />
 
             <TextView
                 android:id="@+id/tv_course_user_day_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="일차"
-                android:textAppearance="@style/TextAppearance.LionHeart.Head1" />
+                android:textAppearance="@style/TextAppearance.LionHeart.Head3" />
 
             <androidx.constraintlayout.helper.widget.Flow
                 android:id="@+id/flow_course_user_week"
@@ -87,14 +67,14 @@
                 android:layout_marginTop="6dp"
                 app:constraint_referenced_ids="tv_course_user_week,tv_course_user_week_label"
                 app:flow_horizontalGap="2dp"
-                app:layout_constraintStart_toStartOf="@id/tv_course_who"
-                app:layout_constraintTop_toBottomOf="@id/tv_course_who" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.helper.widget.Flow
                 android:id="@+id/flow_course_user_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="6dp"
                 app:constraint_referenced_ids="tv_course_user_day,tv_course_user_day_label"
                 app:flow_horizontalGap="2dp"
                 app:layout_constraintStart_toEndOf="@id/flow_course_user_week"
