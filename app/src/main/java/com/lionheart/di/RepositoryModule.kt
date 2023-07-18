@@ -1,6 +1,5 @@
 package com.lionheart.di
 
-import com.lionheart.data.repository.LionRepositoryImpl
 import com.lionheart.domain.repository.LionRepository
 import dagger.Binds
 import dagger.Module

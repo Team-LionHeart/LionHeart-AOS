@@ -3,7 +3,7 @@ package com.lionheart.presentation.search
 import androidx.lifecycle.ViewModel
 import com.lionheart.R
 import com.lionheart.domain.entity.SearchCategory
-import com.lionheart.presentation.search.category.ArticleCategory
+import com.lionheart.domain.entity.ArticleCategory
 
 class SearchViewModel : ViewModel() {
     val categoryList = listOf<SearchCategory>(

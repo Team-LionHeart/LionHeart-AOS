@@ -1,4 +1,4 @@
-package com.lionheart.presentation.search.category
+package com.lionheart.domain.entity
 
 enum class ArticleCategory(val category: String) {
     BUDGET("BUDGET"),
