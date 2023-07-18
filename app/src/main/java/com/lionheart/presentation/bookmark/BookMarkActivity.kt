@@ -55,6 +55,7 @@ class BookMarkActivity : BindingActivity<ActivityBookmarkBinding>(R.layout.activ
 
     override fun constructLayout() {
         initAdapter()
+        checkBookmarkListEmpty()
     }
 
     private fun initAdapter() {
@@ -65,5 +66,11 @@ class BookMarkActivity : BindingActivity<ActivityBookmarkBinding>(R.layout.activ
 
         binding.rvBookmarkArticle.adapter =
             ConcatAdapter(bookmarkTitleAdapter, bookmarkArticleAdapter)
+    }
+
+    private fun checkBookmarkListEmpty() {
+        if (bookmarkList.articleSummaries.isEmpty()) {
+            binding.tvBookmarkEmptyBookmarkList.visibility = View.VISIBLE
+        }
     }
 }
