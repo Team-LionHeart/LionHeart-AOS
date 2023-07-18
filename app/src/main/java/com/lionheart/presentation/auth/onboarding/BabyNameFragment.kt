@@ -14,22 +14,28 @@ class BabyNameFragment : BindingFragment<FragmentBabyNameBinding>(R.layout.fragm
     private val viewModel by viewModels<BabyNameViewModel>()
 
     override fun constructLayout() {
-        // databinding
+
         with(binding) {
+            // databinding
             vm = viewModel
             lifecycleOwner = viewLifecycleOwner
+            // ui
+            tvBabyNameWarning.visibility = View.INVISIBLE
+            btnBabyNameClear.visibility = View.INVISIBLE
         }
-        // ui
-        binding.tvBabyNameWarning.visibility = View.INVISIBLE
     }
 
     override fun addListeners() {
         binding.etBabyName.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 binding.tvBabyNameWarning.visibility = View.VISIBLE
+                binding.btnBabyNameClear.visibility = View.VISIBLE
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
+        binding.btnBabyNameClear.setOnClickListener {
+            binding.etBabyName.text.clear()
+        }
     }
 }
