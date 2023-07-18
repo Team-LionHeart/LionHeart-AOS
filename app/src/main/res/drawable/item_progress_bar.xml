@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 프로그래스바의 배경 (비어있는 부분) -->
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="@color/gray_800" />
+            <corners android:radius="4dp" /> <!-- 둥근 테두리 반지름 -->
+        </shape>
+    </item>
+    <!-- 프로그래스바의 채워진 부분 -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="@color/lion_red" /> <!-- 채워진 부분의 색상 -->
+                <corners android:radius="4dp" /> <!-- 둥근 테두리 반지름 -->
+            </shape>
+        </clip>
+    </item>
+</layer-list>
