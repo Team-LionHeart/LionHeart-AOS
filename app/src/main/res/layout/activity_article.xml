@@ -19,39 +19,37 @@
                 android:id="@+id/layout_article_top"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@color/black">
+                android:background="@color/black"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_marginVertical="16dp"
                     android:id="@+id/iv_article_top_x"
                     android:layout_width="28dp"
-                    android:layout_height="0dp"
+                    android:layout_height="28dp"
+                    android:layout_marginVertical="16dp"
                     android:layout_marginStart="20dp"
                     android:src="@drawable/ic_article_x"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/progress_article_top"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.progressindicator.LinearProgressIndicator
                     android:id="@+id/progress_article_top"
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
-                    app:trackColor="@color/gray_800"
-                    app:layout_constraintTop_toBottomOf="@id/iv_article_top_x"
                     app:indicatorColor="@color/lion_red"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_article_top_x"
+                    app:trackColor="@color/gray_800" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             <androidx.core.widget.NestedScrollView
-                android:progress="0"
-                android:max="100"
-                android:overScrollMode="never"
                 android:id="@+id/layout_article_scroll"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:max="100"
+                android:overScrollMode="never"
+                android:progress="0"
                 app:layout_constraintTop_toBottomOf="@id/layout_article_top">
 
                 <LinearLayout
@@ -133,14 +131,28 @@
                         android:id="@+id/rv_article_main"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
                         android:overScrollMode="never"
 
+                        android:nestedScrollingEnabled="false"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                 </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fbtn_article_go_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:shapeAppearance="@null"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/ic_article_go_up" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
