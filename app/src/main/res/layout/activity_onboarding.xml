@@ -50,6 +50,15 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_onboarding"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_onboarding_toolbar"
+            app:trackThickness="4dp" />
+
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fcv_onboarding"
             android:name="androidx.navigation.fragment.NavHostFragment"
