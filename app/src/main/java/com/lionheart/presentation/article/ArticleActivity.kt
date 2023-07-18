@@ -8,6 +8,10 @@ class ArticleActivity : BindingActivity<ActivityArticleBinding>(R.layout.activit
     private lateinit var adaptor: ArticleAdaptor
     override fun constructLayout() {
         setAdaptor()
+        setProgressBar()
+    }
+
+    override fun addListeners() {
     }
 
     private fun setAdaptor() {
@@ -17,4 +21,12 @@ class ArticleActivity : BindingActivity<ActivityArticleBinding>(R.layout.activit
     }
 
     private fun getArticleComponents() = ArticleMocker.mockChapter1()
+
+    private fun setProgressBar() {
+        binding.layoutArticleScroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            val maxScroll =
+                binding.layoutArticleScroll.getChildAt(0).height - binding.layoutArticleScroll.height
+            binding.progressArticleTop.progress = ((scrollY.toFloat() / maxScroll) * 100).toInt()
+        }
+    }
 }
