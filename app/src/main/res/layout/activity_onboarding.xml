@@ -29,9 +29,9 @@
             <!-- TODO: 다른 브랜치에 있는 ic_arrow_back 으로 대체 -->
             <ImageView
                 android:id="@+id/btn_onboarding_back"
-                android:layout_width="28dp"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:src="@color/gray_800"
+                android:src="@drawable/ic_arrow_back"
                 android:tag="@{vm.step}"
                 app:layout_constraintDimensionRatio="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +53,7 @@
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progress_onboarding"
             android:layout_width="0dp"
+            app:trackColor="@color/gray_800"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
