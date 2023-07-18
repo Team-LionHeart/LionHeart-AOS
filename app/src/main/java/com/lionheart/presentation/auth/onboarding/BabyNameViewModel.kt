@@ -30,8 +30,4 @@ class BabyNameViewModel : ViewModel() {
         if (status == BabyNameWarning.GUIDE) return true
         return false
     }
-
-    companion object {
-        private const val NAME_PATTERN = "^[ㄱ-ㅎ가-힣a-zA-Z0-9]+$"
-    }
 }

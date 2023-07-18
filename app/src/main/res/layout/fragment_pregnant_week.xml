@@ -7,6 +7,9 @@
 
         <import type="android.view.View" />
 
+        <variable
+            name="vm"
+            type="com.lionheart.presentation.auth.onboarding.PregnantWeekViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,6 +59,7 @@
                 android:background="@null"
                 android:fontFamily="@font/pretendard_semibold"
                 android:gravity="end"
+                android:text="@={vm.week}"
                 android:hint="1~40"
                 android:inputType="number"
                 android:lineHeight="28dp"
@@ -90,13 +94,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="1에서 40 사이의 숫자를 입력해주세요."
+            android:text=""
             android:textAppearance="@style/TextAppearance.LionHeart.Body4"
             android:textColor="?colorPrimaryVariant"
-            android:visibility="invisible"
+            android:visibility="@{vm.isValidWeek() ? View.INVISIBLE : View.VISIBLE}"
             app:layout_constraintStart_toStartOf="@id/layout_pregnant_week_input"
-            app:layout_constraintTop_toBottomOf="@id/layout_pregnant_week_input"
-            tools:visibility="visible" />
+            app:layout_constraintTop_toBottomOf="@id/layout_pregnant_week_input" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
