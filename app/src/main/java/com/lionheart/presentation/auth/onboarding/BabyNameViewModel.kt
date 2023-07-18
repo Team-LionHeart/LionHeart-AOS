@@ -20,10 +20,7 @@ class BabyNameViewModel : ViewModel() {
 
     private fun checkName(name: String): BabyNameWarning {
         if (name.isEmpty()) return BabyNameWarning.NO_INPUT
-        if (name.matches(NAME_PATTERN.toRegex())) {
-            if (name.length in 1..10) return BabyNameWarning.GUIDE
-            return BabyNameWarning.OVER_TEN
-        }
+        if (name.length in 1..10) return BabyNameWarning.GUIDE
         return BabyNameWarning.OVER_TEN
     }
 

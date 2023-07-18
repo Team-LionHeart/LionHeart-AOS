@@ -46,6 +46,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="76dp"
             android:hint="태명"
+            android:maxLength="20"
             android:paddingBottom="14dp"
             android:text="@={vm._name}"
             android:textAppearance="@style/TextAppearance.LionHeart.Body1"
