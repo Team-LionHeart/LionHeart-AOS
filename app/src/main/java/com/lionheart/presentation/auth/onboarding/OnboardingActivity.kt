@@ -1,6 +1,7 @@
 package com.lionheart.presentation.auth.onboarding
 
 import android.content.Intent
+import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -15,8 +16,13 @@ class OnboardingActivity :
     private val viewModel by viewModels<OnboardingViewModel>()
     private val navHostFragment by lazy { supportFragmentManager.findFragmentById(R.id.fcv_onboarding) as NavHostFragment }
 
+    override fun constructLayout() {
+        binding.btnOnboardingNext.visibility = View.GONE
+    }
+
     override fun addListeners() {
         navHostFragment.navController.addOnDestinationChangedListener { _, dest, _ ->
+            binding.btnOnboardingNext.visibility = View.GONE
             when (dest.label) {
                 "pregnant_week_fragment" -> {
                     with (binding) {
