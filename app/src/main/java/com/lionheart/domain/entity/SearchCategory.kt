@@ -1,7 +1,6 @@
 package com.lionheart.domain.entity
 
 import android.os.Parcelable
-import com.lionheart.presentation.search.category.ArticleCategory
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

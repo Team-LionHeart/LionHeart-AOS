@@ -1,6 +1,5 @@
 package com.lionheart.di
 
-import com.lionheart.data.service.LionService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
