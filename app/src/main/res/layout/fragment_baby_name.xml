@@ -46,6 +46,8 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="76dp"
             android:hint="태명"
+            android:imeOptions="actionDone"
+            android:inputType="text"
             android:maxLength="20"
             android:paddingBottom="14dp"
             android:text="@={vm._name}"
@@ -71,13 +73,13 @@
         <ImageView
             android:id="@+id/btn_baby_name_clear"
             android:layout_width="wrap_content"
-            android:src="@drawable/ic_onboarding_x"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
-            app:layout_constraintEnd_toEndOf="@id/et_baby_name"
-            app:layout_constraintTop_toTopOf="@id/et_baby_name"
+            android:src="@drawable/ic_onboarding_x"
             app:layout_constraintBottom_toBottomOf="@id/et_baby_name"
-            android:layout_height="wrap_content" />
+            app:layout_constraintEnd_toEndOf="@id/et_baby_name"
+            app:layout_constraintTop_toTopOf="@id/et_baby_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
