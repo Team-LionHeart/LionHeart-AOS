@@ -77,7 +77,7 @@
                         android:id="@+id/btn_course_weekly_thumbnail_bookmark"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/selector_search_detail_bookmark"
+                        android:src="@drawable/selector_bookmark"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
