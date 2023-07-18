@@ -5,6 +5,11 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.lionheart.presentation.auth.onboarding.BabyNameViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,9 +45,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="76dp"
-            android:drawableEnd="@drawable/ic_onboarding_x"
             android:hint="태명"
             android:paddingBottom="14dp"
+            android:text="@={vm._name}"
             android:textAppearance="@style/TextAppearance.LionHeart.Body1"
             android:textColorHint="@color/gray_700"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,9 +61,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="10자 이내로 입력해주세요."
+            android:text="@{vm.setMessage}"
             android:textAppearance="@style/TextAppearance.LionHeart.Body4"
-            android:textColor="?colorPrimaryVariant"
+            android:textColor="@{vm.isValidName() ? @color/gray_500 : @color/component_lion_red}"
             app:layout_constraintStart_toStartOf="@id/et_baby_name"
             app:layout_constraintTop_toBottomOf="@id/et_baby_name" />
 
