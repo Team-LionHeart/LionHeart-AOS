@@ -5,6 +5,7 @@ plugins {
     id 'com.google.dagger.hilt.android'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.20'
     id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
 }
 
 Properties properties = new Properties()
@@ -114,6 +115,9 @@ dependencies {
     // kakao
     implementation "com.kakao.sdk:v2-user:2.13.0"
     // firebase
+    implementation platform('com.google.firebase:firebase-bom:32.2.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
     // coil
     implementation 'io.coil-kt:coil:2.2.2'
     // timber
