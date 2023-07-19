@@ -19,7 +19,6 @@ class BabyNameFragment : BindingFragment<FragmentBabyNameBinding>(R.layout.fragm
         with(binding) {
             // databinding
             vm = viewModel
-            lifecycleOwner = viewLifecycleOwner
             // ui
             tvBabyNameWarning.visibility = View.INVISIBLE
             btnBabyNameClear.visibility = View.INVISIBLE
