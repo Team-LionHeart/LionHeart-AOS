@@ -37,9 +37,8 @@ class ArticleRepositoryImpl @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override suspend fun switchBookmark(articleId: Long, switching: Boolean): Boolean {
-        TODO("Not yet implemented")
-    }
+    override suspend fun switchBookmark(articleId: Long, switching: Boolean): String =
+        articleSource.switchBookmark(articleId, switching).data.toString()
 
     override suspend fun getBookmarks() {
         TODO("Not yet implemented")
