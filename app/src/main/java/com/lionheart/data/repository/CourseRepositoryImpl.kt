@@ -4,8 +4,11 @@ import com.lionheart.R
 import com.lionheart.domain.entity.Course
 import com.lionheart.domain.entity.WeeklyCourse
 import com.lionheart.domain.repository.CourseRepository
+import javax.inject.Inject
 
-class CourseRepositoryImpl : CourseRepository {
+class CourseRepositoryImpl @Inject constructor(
+//    private val courseDataSource: CourseDataSource
+) : CourseRepository {
     override suspend fun getCourseWeekly(): List<Course> = listOf(
         Course.asMonth(2),
         Course.asWeek(
