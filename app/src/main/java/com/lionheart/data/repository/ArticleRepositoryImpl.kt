@@ -1,9 +1,11 @@
 package com.lionheart.data.repository
 
 import com.lionheart.data.datasource.ArticleSource
+import com.lionheart.data.model.response.BookMarkListResponse
 import com.lionheart.domain.entity.Article
 import com.lionheart.domain.entity.ArticleCategory
 import com.lionheart.domain.entity.ArticleDetail
+import com.lionheart.domain.entity.BookmarkArticle
 import com.lionheart.domain.entity.TodayArticle
 import com.lionheart.domain.entity.WeeklyCourse
 import com.lionheart.domain.repository.ArticleRepository
@@ -40,7 +42,8 @@ class ArticleRepositoryImpl @Inject constructor(
     override suspend fun switchBookmark(articleId: Long, switching: Boolean): String =
         articleSource.switchBookmark(articleId, switching).data.toString()
 
-    override suspend fun getBookmarks() {
-        TODO("Not yet implemented")
+    override suspend fun getBookmarks(): Flow<BookmarkArticle> = flow {
+        articleSource.getBookmarkArticle().data?.let { emit(it.toBookmarkArticleEntity()) }
     }
+
 }

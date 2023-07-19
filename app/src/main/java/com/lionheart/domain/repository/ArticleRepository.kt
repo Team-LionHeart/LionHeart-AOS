@@ -1,8 +1,10 @@
 package com.lionheart.domain.repository
 
+import com.lionheart.data.model.response.BookMarkListResponse
 import com.lionheart.domain.entity.Article
 import com.lionheart.domain.entity.ArticleCategory
 import com.lionheart.domain.entity.ArticleDetail
+import com.lionheart.domain.entity.BookmarkArticle
 import com.lionheart.domain.entity.TodayArticle
 import com.lionheart.domain.entity.WeeklyCourse
 import kotlinx.coroutines.flow.Flow
@@ -37,5 +39,5 @@ interface ArticleRepository {
      * TODO : 리턴 값에 북마크 조회 작업 branch 의 dto 적용
      * 북마크 아티클 조회
      */
-    suspend fun getBookmarks()
+    suspend fun getBookmarks(): Flow<BookmarkArticle>
 }
