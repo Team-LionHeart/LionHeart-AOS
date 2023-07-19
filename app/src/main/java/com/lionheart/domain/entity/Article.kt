@@ -4,7 +4,7 @@ data class Article(
     val title: String,
     val mainImageUrl: String,
     val firstBodyContent: String,
-    val requiredTime: Int,
+    val requiredTime: Long,
     val isMarked: Boolean,
     val tags: List<String>,
 )
