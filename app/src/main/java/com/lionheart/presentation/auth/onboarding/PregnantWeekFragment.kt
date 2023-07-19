@@ -16,7 +16,6 @@ class PregnantWeekFragment : BindingFragment<FragmentPregnantWeekBinding>(R.layo
         with(binding) {
             // databinding
             vm = viewModel
-            lifecycleOwner = viewLifecycleOwner
             // ui
             tvPregnantWeekWarning.visibility = View.INVISIBLE
             etPregnantWeek.requestFocus()
