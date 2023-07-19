@@ -10,8 +10,5 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ServiceModule {
-    @Provides
-    @Singleton
-    fun lionService(retrofit: Retrofit): LionService =
-        retrofit.create(LionService::class.java)
+
 }
