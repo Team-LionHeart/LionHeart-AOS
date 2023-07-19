@@ -35,7 +35,12 @@ class SearchDetailActivity :
 
     private fun initAdapter() {
         val searchCategory = intent.getParcelable(SEARCH_CATEGORY, SearchCategory::class.java)
-        searchDetailAdapter = SearchDetailAdapter()
+        searchDetailAdapter = SearchDetailAdapter { articleId, switching ->
+            viewModel.switchBookmark(
+                articleId,
+                switching,
+            )
+        }
         searchCategory?.let {
             searchDetailTitleAdapter = SearchDetailTitleAdapter(it)
         }
