@@ -1,61 +1,30 @@
 package com.lionheart.presentation.bookmark
 
 import android.view.View
+import androidx.activity.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
+import com.lionheart.core.uistate.UiState.Failure
+import com.lionheart.core.uistate.UiState.Success
 import com.lionheart.databinding.ActivityBookmarkBinding
 import com.lionheart.domain.entity.BookmarkArticle
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 
+@AndroidEntryPoint
 class BookMarkActivity : BindingActivity<ActivityBookmarkBinding>(R.layout.activity_bookmark) {
     private var bookmarkTitleAdapter: BookmarkTitleAdapter? = null
     private var bookmarkArticleAdapter: BookmarkArticleAdapter? = null
-
-    private val bookmarkList = BookmarkArticle(
-        articleSummaries = listOf(
-            BookmarkArticle.ArticleSummary(
-                true,
-                "https://github.com/SeonHwan-Kim/VelogInMobile/assets/96679633/53d3618b-2978-47f0-a2fd-8c8f98435047",
-                listOf("hi", "hello", "bye"),
-                "초음파 검사가 어렵다면? 초음파 검사의 모든 것1",
-            ),
-            BookmarkArticle.ArticleSummary(
-                true,
-                "https://github.com/SeonHwan-Kim/VelogInMobile/assets/96679633/53d3618b-2978-47f0-a2fd-8c8f98435047",
-                listOf("hi", "hello", "bye"),
-                "초음파 검사가 어렵다면? 초음파 검사의 모든 것2",
-            ),
-            BookmarkArticle.ArticleSummary(
-                true,
-                "https://github.com/SeonHwan-Kim/VelogInMobile/assets/96679633/53d3618b-2978-47f0-a2fd-8c8f98435047",
-                listOf("hi", "hello", "bye"),
-                "초음파 검사가 어렵다면? 초음파 검사의 모든 것3",
-            ),
-            BookmarkArticle.ArticleSummary(
-                true,
-                "https://github.com/SeonHwan-Kim/VelogInMobile/assets/96679633/53d3618b-2978-47f0-a2fd-8c8f98435047",
-                listOf("hi", "hello", "bye"),
-                "초음파 검사가 어렵다면? 초음파 검사의 모든 것4",
-            ),
-            BookmarkArticle.ArticleSummary(
-                true,
-                "https://github.com/SeonHwan-Kim/VelogInMobile/assets/96679633/53d3618b-2978-47f0-a2fd-8c8f98435047",
-                listOf("hi", "hello", "bye"),
-                "초음파 검사가 어렵다면? 초음파 검사의 모든 것5",
-            ),
-            BookmarkArticle.ArticleSummary(
-                true,
-                "https://github.com/SeonHwan-Kim/VelogInMobile/assets/96679633/53d3618b-2978-47f0-a2fd-8c8f98435047",
-                listOf("hi", "hello", "bye"),
-                "초음파 검사가 어렵다면? 초음파 검사의 모든 것6",
-            ),
-        ),
-        babyNickname = "사랑이",
-    )
+    private val viewModel by viewModels<BookmarkViewModel>()
 
     override fun constructLayout() {
         initAdapter()
-        checkBookmarkListEmpty()
+        getBookmarkArticleState()
     }
 
     override fun addListeners() {
@@ -64,23 +33,39 @@ class BookMarkActivity : BindingActivity<ActivityBookmarkBinding>(R.layout.activ
 
     private fun initAdapter() {
         bookmarkTitleAdapter = BookmarkTitleAdapter()
-        bookmarkArticleAdapter = BookmarkArticleAdapter()
-        bookmarkTitleAdapter?.submitList(listOf(bookmarkList.babyNickname))
-        bookmarkArticleAdapter?.submitList(bookmarkList.articleSummaries)
+        bookmarkArticleAdapter = BookmarkArticleAdapter { articleId, switching ->
+            viewModel.switchBookmark(articleId, switching)
+        }
 
         binding.rvBookmarkArticle.adapter =
             ConcatAdapter(bookmarkTitleAdapter, bookmarkArticleAdapter)
     }
 
-    private fun checkBookmarkListEmpty() {
-        if (bookmarkList.articleSummaries.isEmpty()) {
-            binding.tvBookmarkEmptyBookmarkList.visibility = View.VISIBLE
-        }
-    }
-
     private fun onClickBackButton() {
         binding.ivBookmarkBackButton.setOnClickListener {
             if (!isFinishing) finish()
+        }
+    }
+
+    private fun getBookmarkArticleState() {
+        viewModel.bookmarkArticleState.flowWithLifecycle(lifecycle).onEach { event ->
+            when (event) {
+                is Failure -> {
+                    Timber.tag("getBookmarkArticleState").d(event.code.toString())
+                }
+
+                is Success -> {
+                    bookmarkTitleAdapter?.submitList(listOf(event.data.babyNickname))
+                    bookmarkArticleAdapter?.submitList(event.data.articleSummaries)
+                    checkBookmarkListEmpty(event.data.articleSummaries)
+                }
+            }
+        }.launchIn(lifecycleScope)
+    }
+
+    private fun checkBookmarkListEmpty(articleSummaries: List<BookmarkArticle.ArticleSummary>) {
+        if (articleSummaries.isEmpty()) {
+            binding.tvBookmarkEmptyBookmarkList.visibility = View.VISIBLE
         }
     }
 }
