@@ -14,7 +14,6 @@ class CourseViewModel : ViewModel() {
     val courseList: LiveData<List<Course>>
         get() = _courseList
 
-
     private val courseRepository: CourseRepository by lazy {
         CourseRepositoryImpl()
     }
@@ -23,5 +22,10 @@ class CourseViewModel : ViewModel() {
         viewModelScope.launch {
             _courseList.value = courseRepository.getCourseWeekly()
         }
+    }
+
+    fun getScrollStartPosition(week: Int): Int {
+        if (week == 40) return week + (week / 4) - 5
+        return week + (week / 4) - 4
     }
 }
