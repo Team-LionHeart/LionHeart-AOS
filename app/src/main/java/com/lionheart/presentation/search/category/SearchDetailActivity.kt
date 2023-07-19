@@ -1,14 +1,23 @@
 package com.lionheart.presentation.search.category
 
 import androidx.activity.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
 import com.lionheart.core.intent.getParcelable
+import com.lionheart.core.uistate.UiState.Failure
+import com.lionheart.core.uistate.UiState.Success
 import com.lionheart.databinding.ActivitySearchDetailBinding
 import com.lionheart.domain.entity.SearchCategory
 import com.lionheart.presentation.search.SearchFragment.Companion.SEARCH_CATEGORY
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 
+@AndroidEntryPoint
 class SearchDetailActivity :
     BindingActivity<ActivitySearchDetailBinding>(R.layout.activity_search_detail) {
     private val viewModel by viewModels<SearchDetailViewModel>()
@@ -16,6 +25,7 @@ class SearchDetailActivity :
     private var searchDetailTitleAdapter: SearchDetailTitleAdapter? = null
 
     override fun constructLayout() {
+        getCategoryArticle()
         initAdapter()
     }
 
@@ -29,14 +39,29 @@ class SearchDetailActivity :
         searchCategory?.let {
             searchDetailTitleAdapter = SearchDetailTitleAdapter(it)
         }
-        getSearchDetail()
+        submitSearchDetailArticle()
 
         binding.rvSearchDetailArticle.adapter =
             ConcatAdapter(searchDetailTitleAdapter, searchDetailAdapter)
     }
 
-    private fun getSearchDetail() {
-        searchDetailAdapter?.submitList(viewModel.mockArticleList)
+    private fun getCategoryArticle() {
+        val searchCategory = intent.getParcelable(SEARCH_CATEGORY, SearchCategory::class.java)
+        searchCategory?.serverName?.let { viewModel.getCategoryArticle(it) }
+    }
+
+    private fun submitSearchDetailArticle() {
+        viewModel.getCategoryArticleState.flowWithLifecycle(lifecycle).onEach { event ->
+            when (event) {
+                is Failure -> {
+                    Timber.tag("getCategoryArticleState").d(event.code.toString())
+                }
+
+                is Success -> {
+                    searchDetailAdapter?.submitList(event.data)
+                }
+            }
+        }.launchIn(lifecycleScope)
     }
 
     private fun onClickBackButton() {
