@@ -1,6 +1,7 @@
 package com.lionheart.presentation.course
 
 import android.graphics.Color
+import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.lionheart.domain.entity.WeeklyCourse
 
 class CourseAdapter(private val list: List<Course>) :
     ListAdapter<WeeklyCourse, RecyclerView.ViewHolder>(diffUtil) {
+    private val courseState = SparseBooleanArray()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -41,7 +43,7 @@ class CourseAdapter(private val list: List<Course>) :
             }
 
             TYPE_WEEK -> {
-                (holder as CourseWeekViewHolder).onBind(list[position].getData())
+                (holder as CourseWeekViewHolder).onBind(list[position].getData(), courseState)
             }
 
             else -> throw IllegalArgumentException("view type not found")
@@ -77,20 +79,37 @@ class CourseMonthViewHolder(private val binding: ItemCourseMonthBinding) :
 
 class CourseWeekViewHolder(private val binding: ItemCourseWeekBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun onBind(data: Course.CourseData) {
+    fun onBind(data: Course.CourseData, courseStatus: SparseBooleanArray) {
         binding.data = data as WeeklyCourse.WeeklyCourseData
+        if (courseStatus[position]) {
+            openCard()
+        } else {
+            closeCard()
+        }
         binding.btnDownArrow.setOnClickListener {
             if (binding.layoutCourseThumbnailHidden.visibility == View.VISIBLE) {
 //                TransitionManager.beginDelayedTransition(binding.cardCourseThumbnail, Slide())
-                binding.layoutCourseThumbnailHidden.visibility = View.GONE
-                binding.tvWeek.setTextColor(Color.parseColor("#8E8E8E"))
-                binding.btnDownArrow.setImageResource(R.drawable.ic_course_arrow_down)
+                courseStatus.put(position, false)
+                closeCard()
             } else {
+                courseStatus.put(position, true)
 //                TransitionManager.beginDelayedTransition(binding.cardCourseThumbnail, Slide(Gravity.TOP))
-                binding.layoutCourseThumbnailHidden.visibility = View.VISIBLE
-                binding.tvWeek.setTextColor(Color.parseColor("#FF2D64"))
-                binding.btnDownArrow.setImageResource(R.drawable.ic_course_arrow_up)
+                openCard()
             }
         }
+    }
+
+    private fun openCard() {
+        with(binding) {
+            layoutCourseThumbnailHidden.visibility = View.VISIBLE
+            tvWeek.setTextColor(Color.parseColor("#FF2D64"))
+            btnDownArrow.setImageResource(R.drawable.ic_course_arrow_up)
+        }
+    }
+
+    private fun closeCard() {
+        binding.layoutCourseThumbnailHidden.visibility = View.GONE
+        binding.tvWeek.setTextColor(Color.parseColor("#8E8E8E"))
+        binding.btnDownArrow.setImageResource(R.drawable.ic_course_arrow_down)
     }
 }
