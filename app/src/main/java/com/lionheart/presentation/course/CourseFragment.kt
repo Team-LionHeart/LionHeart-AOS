@@ -32,6 +32,7 @@ class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_
             with(binding.rvCourseContent) {
                 adapter = courseAdapter
                 layoutManager = LinearLayoutManager(context)
+                (layoutManager as LinearLayoutManager).scrollToPosition(viewModel.getScrollStartPosition(10))
             }
         }
     }
