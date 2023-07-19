@@ -5,12 +5,13 @@ import com.lionheart.domain.entity.ArticleCategory
 import com.lionheart.domain.entity.ArticleDetail
 import com.lionheart.domain.entity.TodayArticle
 import com.lionheart.domain.entity.WeeklyCourse
+import kotlinx.coroutines.flow.Flow
 
 interface ArticleRepository {
     /**
      * 카테고리 별 아티클 조회
      */
-    suspend fun getArticleByCategory(category: ArticleCategory): List<Article>
+    suspend fun getArticleByCategory(category: ArticleCategory): Flow<List<Article>>
 
     /**
      * 아티클 디테일 조회
