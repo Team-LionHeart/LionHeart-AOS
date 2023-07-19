@@ -1,24 +1,13 @@
 package com.lionheart.presentation.course
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.lionheart.domain.entity.Article
 import com.lionheart.domain.entity.CourseWeek
-import com.lionheart.domain.entity.Lion
-import com.lionheart.domain.repository.LionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class CourseDetailViewModel @Inject constructor(
-    private val lionRepository: LionRepository
-) : ViewModel() {
-    private val _exampleData = MutableLiveData<Lion>()
-    val exampleData: LiveData<Lion> get() = _exampleData
+class CourseDetailViewModel @Inject constructor() : ViewModel() {
 
     val tempHeader = CourseWeek(
         week = 28,
@@ -83,16 +72,4 @@ class CourseDetailViewModel @Inject constructor(
             listOf("신체변화", "건강", "병원 정보"),
         ),
     )
-
-    fun getExampleData() {
-        viewModelScope.launch {
-            lionRepository.getArticleList(1)
-                .onSuccess { response ->
-                    _exampleData.value = response
-                }
-                .onFailure {
-                    Timber.tag("getExampleDataFailure").d(it)
-                }
-        }
-    }
 }
