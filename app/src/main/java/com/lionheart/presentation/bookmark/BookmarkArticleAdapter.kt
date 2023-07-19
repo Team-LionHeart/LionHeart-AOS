@@ -8,10 +8,11 @@ import com.lionheart.core.view.ItemDiffCallback
 import com.lionheart.databinding.ItemBookmarkArticleBinding
 import com.lionheart.domain.entity.BookmarkArticle
 
-class BookmarkArticleAdapter :
-    ListAdapter<BookmarkArticle.ArticleSummary, BookmarkArticleViewHolder>(
-        itemBookmarkArticleDiffUtil,
-    ) {
+class BookmarkArticleAdapter(
+    private val onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+) : ListAdapter<BookmarkArticle.ArticleSummary, BookmarkArticleViewHolder>(
+    itemBookmarkArticleDiffUtil,
+) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkArticleViewHolder {
         return BookmarkArticleViewHolder(
             ItemBookmarkArticleBinding.inflate(
@@ -23,7 +24,7 @@ class BookmarkArticleAdapter :
     }
 
     override fun onBindViewHolder(holder: BookmarkArticleViewHolder, position: Int) {
-        holder.onBind(getItem(position))
+        holder.onBind(getItem(position), onClickBookmark)
     }
 
     companion object {
@@ -36,8 +37,17 @@ class BookmarkArticleAdapter :
 
 class BookmarkArticleViewHolder(private val binding: ItemBookmarkArticleBinding) :
     ViewHolder(binding.root) {
-    fun onBind(article: BookmarkArticle.ArticleSummary) {
-        binding.data = article
-        binding.ivBookmarkBookmarkButton.isSelected = article.isMarked
+    fun onBind(
+        article: BookmarkArticle.ArticleSummary,
+        onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+    ) {
+        with(binding) {
+            data = article
+            ivBookmarkBookmarkButton.isSelected = article.isMarked
+            ivBookmarkBookmarkButton.setOnClickListener {
+                onClickBookmark(article.articleId, ivBookmarkBookmarkButton.isSelected.not())
+                ivBookmarkBookmarkButton.isSelected = ivBookmarkBookmarkButton.isSelected.not()
+            }
+        }
     }
 }
