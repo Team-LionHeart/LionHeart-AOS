@@ -1,18 +1,30 @@
 package com.lionheart.data.model.response
 
 import com.lionheart.domain.entity.Article
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ArticleListResponse(
+    @SerialName("categoryArticles")
     val categoryArticles: List<ArticleResponse>,
 ) {
+    @Serializable
     data class ArticleResponse(
+        @SerialName("articleId")
         val articleId: Long,
+        @SerialName("title")
         val title: String,
+        @SerialName("mainImageUrl")
         val mainImageUrl: String,
+        @SerialName("firstBodyContent")
         val firstBodyContent: String,
+        @SerialName("requiredTime")
         val requiredTime: Long,
+        @SerialName("isMarked")
         val isMarked: Boolean,
-        val tags: List<String>
+        @SerialName("tags")
+        val tags: List<String>,
     ) {
         fun toArticleEntity() = Article(
             title = title,
