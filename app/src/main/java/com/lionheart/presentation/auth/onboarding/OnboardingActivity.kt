@@ -45,7 +45,7 @@ class OnboardingActivity :
             when (it.tag) {
                 // 임신 주수 뷰에서
                 0 -> {
-                    findNavController(R.id.fcv_onboarding).navigate(R.id.action_pregnant_week_fragment_to_baby_name_fragment)
+                    navHostFragment.navController.navigate(R.id.action_pregnant_week_fragment_to_baby_name_fragment)
                 }
                 // 태명 뷰에서
                 1 -> {
@@ -66,7 +66,7 @@ class OnboardingActivity :
                 }
                 // 태명 뷰에서
                 1 -> {
-                    findNavController(R.id.fcv_onboarding).navigate(R.id.action_baby_name_fragment_to_pregnant_week_fragment)
+                    navHostFragment.navController.navigate(R.id.action_baby_name_fragment_to_pregnant_week_fragment)
                 }
             }
         }
