@@ -27,6 +27,7 @@ data class ArticleListResponse(
         val tags: List<String>,
     ) {
         fun toArticleEntity() = Article(
+            articleId = articleId,
             title = title,
             mainImageUrl = mainImageUrl,
             firstBodyContent = firstBodyContent,
