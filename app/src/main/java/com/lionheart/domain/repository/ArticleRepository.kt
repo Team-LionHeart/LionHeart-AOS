@@ -31,7 +31,7 @@ interface ArticleRepository {
     /**
      * 북마크 스위칭
      */
-    suspend fun switchBookmark(articleId: Long, switching: Boolean): Boolean
+    suspend fun switchBookmark(articleId: Long, switching: Boolean): String
 
     /**
      * TODO : 리턴 값에 북마크 조회 작업 branch 의 dto 적용

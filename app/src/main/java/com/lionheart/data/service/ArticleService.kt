@@ -37,5 +37,5 @@ interface ArticleService {
     @POST("/api/v1/article/bookmark")
     suspend fun switchBookmark(
         @Body bookMarkRequest: BookMarkRequest
-    ): BaseResponse<Unit>
+    ): BaseResponse<String>
 }
