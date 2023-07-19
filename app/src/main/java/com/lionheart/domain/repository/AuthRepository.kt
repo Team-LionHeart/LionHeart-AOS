@@ -16,6 +16,11 @@ interface AuthRepository {
     suspend fun logout(): Boolean
 
     /**
+     * fcm 토큰 발급
+     */
+    fun getFCMToken(setFCMToken: (String) -> Unit)
+
+    /**
      * 토큰 재발급
      */
     suspend fun reissueToken(): AuthToken
