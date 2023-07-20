@@ -100,17 +100,6 @@
             tools:text="신체 변화 · 건강 · 아무튼 태그" />
 
         <TextView
-            android:id="@+id/tv_course_weekly_thumbnail_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.LionHeart.Body4"
-            android:text="2023.07.14"
-            android:textColor="@color/gray_600"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_course_weekly_thumbnail_tag"
-            tools:text="2023.06.21" />
-
-        <TextView
             android:id="@+id/tv_course_weekly_thumbnail_title"
             style="@style/TextAppearance.LionHeart.Head3"
             android:layout_width="wrap_content"
