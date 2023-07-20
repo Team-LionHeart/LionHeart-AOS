@@ -80,8 +80,6 @@ class ChallengeFragment : BindingFragment<FragmentChallengeBinding>(R.layout.fra
                     ivChallengeBadge.setImageResource(R.drawable.ic_challenge_level_5)
                     tvChallengeLevel.text = "Lv.5"
                 }
-
-                else -> throw RuntimeException("알 수 없는 에러 발생")
             }
         }
     }
