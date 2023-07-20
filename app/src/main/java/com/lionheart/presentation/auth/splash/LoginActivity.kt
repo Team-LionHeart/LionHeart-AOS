@@ -1,10 +1,17 @@
 package com.lionheart.presentation.auth.splash
 
+import android.content.Intent
+import androidx.activity.viewModels
 import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
 import com.lionheart.databinding.ActivityLoginBinding
+import com.lionheart.presentation.MainActivity
+import com.lionheart.presentation.auth.onboarding.OnboardingActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
+    private val viewModel: LoginViewModel by viewModels()
     override fun constructLayout() {
         super.constructLayout()
     }
@@ -34,7 +41,15 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     }
 
     private fun callSignUp(oauthAccessToken: String, oauthRefreshToken: String) {
-        // TODO : sign up api 연동
-        print("")
+        viewModel.loginOnApi(oauthAccessToken, oauthRefreshToken,
+            goMain = {
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+            },
+            goOnBoarding = {
+                startActivity(Intent(this@LoginActivity, OnboardingActivity::class.java))
+                finish()
+            }
+        )
     }
 }
