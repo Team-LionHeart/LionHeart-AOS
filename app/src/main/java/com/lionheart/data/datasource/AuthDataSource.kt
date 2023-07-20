@@ -9,6 +9,13 @@ import javax.inject.Inject
 class AuthDataSource @Inject constructor(
     private val authService: AuthService
 ) {
+    suspend fun socialLogin(socialType: String, token: String, fcmToken: String) =
+        authService.postLoginSocial(
+            SocialLoginRequest(
+                socialType, token, fcmToken
+            )
+        )
+
     suspend fun postLoginSocial(
         socialType: String,
         token: String,
