@@ -2,11 +2,14 @@ package com.lionheart.presentation.course
 
 import android.graphics.Color
 import android.util.SparseBooleanArray
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.Slide
+import androidx.transition.TransitionManager
 import com.lionheart.R
 import com.lionheart.core.view.ItemDiffCallback
 import com.lionheart.databinding.ItemCourseMonthBinding
@@ -87,14 +90,12 @@ class CourseWeekViewHolder(private val binding: ItemCourseWeekBinding) :
         } else {
             closeCard()
         }
-        binding.btnDownArrow.setOnClickListener {
+        binding.layoutCourseThumbnailFixed.setOnClickListener {
             if (binding.layoutCourseThumbnailHidden.visibility == View.VISIBLE) {
-//                TransitionManager.beginDelayedTransition(binding.cardCourseThumbnail, Slide())
                 courseStatus.put(position, false)
                 closeCard()
             } else {
                 courseStatus.put(position, true)
-//                TransitionManager.beginDelayedTransition(binding.cardCourseThumbnail, Slide(Gravity.TOP))
                 openCard()
             }
         }
