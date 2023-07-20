@@ -19,7 +19,7 @@ import com.lionheart.domain.entity.MonthlyCourse
 import com.lionheart.domain.entity.SearchCategory
 import com.lionheart.domain.entity.WeeklyCourse
 
-class CourseAdapter(private val list: List<Course>, private val onClickItem: (Int) -> Unit) :
+class CourseAdapter(private val list: List<Course>, private val onClickItem: (Int, String) -> Unit) :
     ListAdapter<WeeklyCourse, RecyclerView.ViewHolder>(diffUtil) {
     private val courseState = SparseBooleanArray()
 
@@ -83,7 +83,7 @@ class CourseMonthViewHolder(private val binding: ItemCourseMonthBinding) :
 
 class CourseWeekViewHolder(private val binding: ItemCourseWeekBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun onBind(data: Course.CourseData, courseStatus: SparseBooleanArray, onClickItem: (Int) -> Unit) {
+    fun onBind(data: Course.CourseData, courseStatus: SparseBooleanArray, onClickItem: (Int, String) -> Unit) {
         binding.data = data as WeeklyCourse.WeeklyCourseData
         if (courseStatus[position]) {
             openCard()
@@ -101,7 +101,7 @@ class CourseWeekViewHolder(private val binding: ItemCourseWeekBinding) :
         }
         // 커리큘럼 상세로 이동
         binding.btnToDetail.setOnClickListener {
-            onClickItem(data.week)
+            onClickItem(data.week, data.image)
         }
     }
 
