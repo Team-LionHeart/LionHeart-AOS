@@ -28,6 +28,12 @@ class CourseDetailActivity :
         initRecyclerView()
     }
 
+    override fun addListeners() {
+        binding.btnCourseWeeklyBack.setOnClickListener {
+            finish()
+        }
+    }
+
     private fun initRecyclerView() {
         _courseWeeklyTitleAdapter = CourseDetailTitleAdapter(viewModel.tempHeader)
         _courseWeeklyAdapter = CourseDetailAdapter(viewModel.courseWeeklyList)
