@@ -4,7 +4,7 @@ class WeeklyCourse(
     val weekData: WeeklyCourseData
 ) : Course {
     class WeeklyCourseData(
-        val week: Int,
+        val week: Long,
         val title: String,
         val image: String,
         val content: String
