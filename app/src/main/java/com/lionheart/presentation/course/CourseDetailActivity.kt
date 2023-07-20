@@ -20,6 +20,7 @@ class CourseDetailActivity :
         get() = requireNotNull(_courseWeeklyAdapter) { Timber.e("adapter not initialized") }
 
     override fun constructLayout() {
+        Timber.d("${intent.getIntExtra("week", 0)}, ${intent.getStringExtra("imageUrl")}")
         // databinding
         with(binding) {
             vm = viewModel
