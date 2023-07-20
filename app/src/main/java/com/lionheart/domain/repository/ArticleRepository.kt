@@ -28,7 +28,7 @@ interface ArticleRepository {
     /**
      * 주차별 아티클 조회
      */
-    suspend fun getWeeklyArticle(week: Long): WeeklyCourse
+    suspend fun getWeeklyArticle(week: Long): Flow<List<Article>>
 
     /**
      * 북마크 스위칭

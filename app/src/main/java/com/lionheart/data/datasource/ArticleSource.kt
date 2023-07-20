@@ -14,4 +14,10 @@ class ArticleSource @Inject constructor(
         articleService.switchBookmark(BookMarkRequest(articleId, bookmarkStatus))
 
     suspend fun getBookmarkArticle() = articleService.getBookmarks()
+    
+    suspend fun getCategoryArticle(category: ArticleCategory) =
+        articleService.getArticles(category)
+
+    suspend fun getWeeklyArticle(week: Long) =
+        articleService.getWeeklyArticle(week)
 }

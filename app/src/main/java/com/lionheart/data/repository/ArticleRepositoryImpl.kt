@@ -35,8 +35,10 @@ class ArticleRepositoryImpl @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override suspend fun getWeeklyArticle(week: Long): WeeklyCourse {
-        TODO("Not yet implemented")
+    override suspend fun getWeeklyArticle(week: Long): Flow<List<Article>> = flow {
+        articleSource.getWeeklyArticle(week).data?.categoryArticles?.map { article ->
+            article.toArticleEntity()
+        }?.let { emit(it) }
     }
 
     override suspend fun switchBookmark(articleId: Long, switching: Boolean): String =
