@@ -1,5 +1,6 @@
 package com.lionheart.presentation.course
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lionheart.R
@@ -27,7 +28,7 @@ class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_
 
     private fun initRecyclerView() {
         viewModel.courseList.observe(this@CourseFragment) {
-            _courseAdapter = CourseAdapter(it)
+            _courseAdapter = CourseAdapter(it) { week -> goToDetail(week) }
 
             with(binding.rvCourseContent) {
                 adapter = courseAdapter
@@ -35,6 +36,12 @@ class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_
                 (layoutManager as LinearLayoutManager).scrollToPosition(viewModel.getScrollStartPosition(10))
             }
         }
+    }
+
+    private fun goToDetail(week: Int) {
+        Intent(activity, CourseDetailActivity::class.java).apply {
+            putExtra("week", week)
+        }.run(::startActivity)
     }
 
     override fun onDestroyView() {

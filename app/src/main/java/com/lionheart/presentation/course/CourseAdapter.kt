@@ -13,9 +13,10 @@ import com.lionheart.databinding.ItemCourseMonthBinding
 import com.lionheart.databinding.ItemCourseWeekBinding
 import com.lionheart.domain.entity.Course
 import com.lionheart.domain.entity.MonthlyCourse
+import com.lionheart.domain.entity.SearchCategory
 import com.lionheart.domain.entity.WeeklyCourse
 
-class CourseAdapter(private val list: List<Course>) :
+class CourseAdapter(private val list: List<Course>, private val onClickItem: (Int) -> Unit) :
     ListAdapter<WeeklyCourse, RecyclerView.ViewHolder>(diffUtil) {
     private val courseState = SparseBooleanArray()
 
@@ -43,7 +44,7 @@ class CourseAdapter(private val list: List<Course>) :
             }
 
             TYPE_WEEK -> {
-                (holder as CourseWeekViewHolder).onBind(list[position].getData(), courseState)
+                (holder as CourseWeekViewHolder).onBind(list[position].getData(), courseState, onClickItem)
             }
 
             else -> throw IllegalArgumentException("view type not found")
@@ -79,7 +80,7 @@ class CourseMonthViewHolder(private val binding: ItemCourseMonthBinding) :
 
 class CourseWeekViewHolder(private val binding: ItemCourseWeekBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun onBind(data: Course.CourseData, courseStatus: SparseBooleanArray) {
+    fun onBind(data: Course.CourseData, courseStatus: SparseBooleanArray, onClickItem: (Int) -> Unit) {
         binding.data = data as WeeklyCourse.WeeklyCourseData
         if (courseStatus[position]) {
             openCard()
@@ -96,6 +97,10 @@ class CourseWeekViewHolder(private val binding: ItemCourseWeekBinding) :
 //                TransitionManager.beginDelayedTransition(binding.cardCourseThumbnail, Slide(Gravity.TOP))
                 openCard()
             }
+        }
+        // 커리큘럼 상세로 이동
+        binding.btnToDetail.setOnClickListener {
+            onClickItem(data.week)
         }
     }
 
