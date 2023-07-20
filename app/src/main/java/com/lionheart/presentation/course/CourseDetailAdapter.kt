@@ -9,7 +9,7 @@ import com.lionheart.core.view.ItemDiffCallback
 import com.lionheart.databinding.ItemCourseDetailThumbnailBinding
 import com.lionheart.domain.entity.Article
 
-class CourseDetailAdapter(private val list: List<Article>) :
+class CourseDetailAdapter :
     ListAdapter<Article, RecyclerView.ViewHolder>(diffUtil) {
     private val bookmarkStatus = SparseBooleanArray()
 
@@ -20,10 +20,8 @@ class CourseDetailAdapter(private val list: List<Article>) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as CourseWeeklyViewHolder).onBind(list[position], bookmarkStatus)
+        (holder as CourseWeeklyViewHolder).onBind(getItem(position), bookmarkStatus)
     }
-
-    override fun getItemCount(): Int = list.size
 
     companion object {
         private val diffUtil = ItemDiffCallback<Article>(
