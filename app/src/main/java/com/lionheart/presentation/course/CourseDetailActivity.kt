@@ -30,7 +30,7 @@ class CourseDetailActivity :
 
     override fun addListeners() {
         binding.btnCourseWeeklyBack.setOnClickListener {
-            finish()
+            if (!isFinishing) finish()
         }
     }
 
