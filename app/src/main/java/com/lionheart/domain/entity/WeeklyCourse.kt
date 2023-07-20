@@ -6,7 +6,7 @@ class WeeklyCourse(
     class WeeklyCourseData(
         val week: Int,
         val title: String,
-        val image: Int,
+        val image: String,
         val content: String
     ) : Course.CourseData
 
