@@ -97,7 +97,7 @@ class CourseRepositoryImpl @Inject constructor(
         Course.asWeek(
             WeeklyCourse.WeeklyCourseData(
                 14,
-                "소리를 듣기 시작한 아기에게 들려주는 아빠 목소리",
+                "아기가 소리를 듣기 시작해요",
                 "https://lionheart-article-s3.s3.ap-northeast-2.amazonaws.com/images/curriculum/14%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1.png",
                 "14주차부터 뱃속의 아기가 바깥의 소리를 듣기 시작해요. 아빠의 목소리를 아기에게 편안하게 들려줄 수 있도록 '태담'에 대한 아티클을 준비했어요. 더불어 예비 부모라면 반드시 챙겨야할 임신, 출산, 육아 박람회에 대한 정보도 놓치지마세요."
             )
@@ -105,7 +105,7 @@ class CourseRepositoryImpl @Inject constructor(
         Course.asWeek(
             WeeklyCourse.WeeklyCourseData(
                 15,
-                "태교 여행, 부부만의 시간이 필요한 이유",
+                "부부만의 시간이 필요한 이유",
                 "https://lionheart-article-s3.s3.ap-northeast-2.amazonaws.com/images/curriculum/15%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1.png",
                 "15주차는 입덧과 유산의 위험이 줄어든 안정기로, 태교 여행을 계획하고 있다면 가장 적합한 시기라고 할 수 있어요. 아기가 태어나기 전 부부만의 시간이 꼭 필요하다는 것을 잊지 말기! 다른 아빠들의 태교 여행 이야기를 전해드려요."
             )
@@ -115,7 +115,7 @@ class CourseRepositoryImpl @Inject constructor(
         Course.asWeek(
             WeeklyCourse.WeeklyCourseData(
                 16,
-                "작은 노력으로도 좋은 아빠가 되는 소소한 팁",
+                "작은 노력으로도 좋은 아빠가 되는 팁",
                 "https://lionheart-article-s3.s3.ap-northeast-2.amazonaws.com/images/curriculum/16%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1.png",
                 "16주차에는 많은 돈과 시간을 들이지 않고 와이프를 감동시킬 수 있는 소소한 팁을 공유해요. 임신부를 위한 따뜻한 족욕부터 앉아서도 가볍게 할 수 있는 스트레칭까지, 좋은 아빠가 되기 위해 좋은 남편이 되어볼까요?"
             )
@@ -123,7 +123,7 @@ class CourseRepositoryImpl @Inject constructor(
         Course.asWeek(
             WeeklyCourse.WeeklyCourseData(
                 17,
-                "드디어 아기의 성별을 확인할 수 있어요",
+                "아기의 성별을 확인할 수 있어요",
                 "https://lionheart-article-s3.s3.ap-northeast-2.amazonaws.com/images/curriculum/17%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1.png",
                 "17주차에는 아기의 성별을 확인할 수 있어요. 임신 초기에 성별을 파악하기 위해 초음파 사진을 요리조리 돌려보는 '각도법'이 유행하기도 했지만, 사실 정확한 성별은 17주차 이후에 산부인과에서 검사를 통해 알 수 있답니다."
             )
@@ -139,7 +139,7 @@ class CourseRepositoryImpl @Inject constructor(
         Course.asWeek(
             WeeklyCourse.WeeklyCourseData(
                 19,
-                "출산 용품, 이제부터 시작해도 늦지 않아요",
+                "출산 용품, 지금 시작해도 늦지 않아요",
                 "https://lionheart-article-s3.s3.ap-northeast-2.amazonaws.com/images/curriculum/19%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1.png",
                 "19주차에는 다양한 출산 용품을 준비하기 위한 전반적인 전략을 다룰 예정이에요. 육아 프리미엄이 점차 확대되는 세상, 정말 필요한 물건만 합리적인 가격에 구입하는 방법은 없을까요?"
             )
@@ -301,7 +301,7 @@ class CourseRepositoryImpl @Inject constructor(
         Course.asWeek(
             WeeklyCourse.WeeklyCourseData(
                 38,
-                "아빠가 해줄 수 없는 게 없어 초조하다면",
+                "해줄 수 있는 게 없어 초조하다면",
                 "https://lionheart-article-s3.s3.ap-northeast-2.amazonaws.com/images/curriculum/38%E1%84%8C%E1%85%AE%E1%84%8E%E1%85%A1.png",
                 "38주차에는 분만 과정에서 도움이 될 수 있는 아빠의 소소한 팁을 정리했어요. 진통은 짧게는 2시간, 길게는 이틀을 넘어가기도 해요. 엄마가 진통을 느끼는 순간에 아빠는 어떻게 해야 할까요? 밥을 먹고 와도 될까요?"
             )
