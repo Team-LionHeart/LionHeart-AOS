@@ -49,11 +49,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:text="@{@string/search_detail_required_time(data.requiredTime)}"
                     android:textColor="@color/gray_500"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="9분 가량" />
+                    tools:text="9분 분량" />
 
                 <ImageView
                     android:id="@+id/iv_search_detail_bookmark"
