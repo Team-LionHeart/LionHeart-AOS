@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ArticleListResponse(
-    @SerialName("categoryArticles")
-    val categoryArticles: List<ArticleResponse>,
+    @SerialName("articleSummaries")
+    val articleSummaries: List<ArticleResponse>,
 ) {
     @Serializable
     data class ArticleResponse(

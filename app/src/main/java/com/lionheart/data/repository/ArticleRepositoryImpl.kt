@@ -18,7 +18,7 @@ class ArticleRepositoryImpl @Inject constructor(
 ) : ArticleRepository {
     override suspend fun getArticleByCategory(category: ArticleCategory): Flow<List<Article>> =
         flow {
-            articleSource.getCategoryArticle(category).data?.categoryArticles?.map { article ->
+            articleSource.getCategoryArticle(category).data?.articleSummaries?.map { article ->
                 article.toArticleEntity()
             }?.let {
                 emit(
@@ -36,7 +36,7 @@ class ArticleRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getWeeklyArticle(week: Long): Flow<List<Article>> = flow {
-        articleSource.getWeeklyArticle(week).data?.categoryArticles?.map { article ->
+        articleSource.getWeeklyArticle(week).data?.articleSummaries?.map { article ->
             article.toArticleEntity()
         }?.let { emit(it) }
     }
