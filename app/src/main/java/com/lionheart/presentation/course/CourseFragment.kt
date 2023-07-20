@@ -40,7 +40,7 @@ class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_
 
     private fun goToDetail(week: Int, image: String) {
         Intent(activity, CourseDetailActivity::class.java).apply {
-            putExtra("week", week)
+            putExtra(WEEK, week)
             putExtra("imageUrl", image)
         }.run(::startActivity)
     }
@@ -48,5 +48,9 @@ class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_
     override fun onDestroyView() {
         super.onDestroyView()
         _courseAdapter = null
+    }
+
+    companion object {
+        const val WEEK = "week"
     }
 }
