@@ -5,6 +5,7 @@ import com.lionheart.domain.entity.AuthToken
 import com.lionheart.domain.entity.SignUpInfo
 import com.lionheart.domain.entity.SocialType
 import com.lionheart.domain.repository.AnonymousRepository
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -21,7 +22,13 @@ class AnonymousRepositoryImpl @Inject constructor(
             ?.let { emit(it) }
     }
 
-    override suspend fun signUp(signUpInfo: SignUpInfo): AuthToken {
-        TODO("Not yet implemented")
+    override suspend fun signUp(signUpInfo: SignUpInfo): Flow<AuthToken> = flow {
+        authDataSource.signUp(
+            signUpInfo.socialType.name,
+            signUpInfo.token,
+            signUpInfo.fcmToken,
+            signUpInfo.pregnantWeek,
+            signUpInfo.babyNickname
+        ).data?.toAuthToken()?.let { emit(it) }
     }
 }

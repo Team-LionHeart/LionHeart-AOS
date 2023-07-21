@@ -26,20 +26,9 @@ class BabyNameActivity : BindingActivity<ActivityBabyNameBinding>(R.layout.activ
 
     override fun addListeners() {
         watchInput()
-        binding.btnBabyNameClear.setOnClickListener {
-            binding.etBabyName.text.clear()
-        }
-        binding.btnBabyNameNext.setOnClickListener {
-            Timber.d("pregnant week : ${intent.getStringExtra("week")}")
-            Intent(this, RegisterDoneActivity::class.java).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                putExtra("week", intent.getStringExtra("week"))
-                putExtra("name", binding.etBabyName.text.toString())
-            }.run(::startActivity)
-        }
-        binding.layoutBabyNameToolbar.btnBack.setOnClickListener {
-            finish()
-        }
+        clearInput()
+        goToDone()
+        goBack()
     }
 
     private fun watchInput() {
@@ -57,5 +46,28 @@ class BabyNameActivity : BindingActivity<ActivityBabyNameBinding>(R.layout.activ
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
+    }
+
+    private fun clearInput() {
+        binding.btnBabyNameClear.setOnClickListener {
+            binding.etBabyName.text.clear()
+        }
+    }
+
+    private fun goToDone() {
+        binding.btnBabyNameNext.setOnClickListener {
+            Timber.d("pregnant week : ${intent.getStringExtra("week")}")
+            Intent(this, RegisterDoneActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                putExtra("week", intent.getStringExtra("week"))
+                putExtra("name", binding.etBabyName.text.toString())
+            }.run(::startActivity)
+        }
+    }
+
+    private fun goBack() {
+        binding.layoutBabyNameToolbar.btnBack.setOnClickListener {
+            finish()
+        }
     }
 }

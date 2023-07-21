@@ -19,5 +19,5 @@ interface AnonymousRepository {
     /**
      * 회원가입
      */
-    suspend fun signUp(signUpInfo: SignUpInfo): AuthToken
+    suspend fun signUp(signUpInfo: SignUpInfo): Flow<AuthToken>
 }
