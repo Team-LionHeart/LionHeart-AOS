@@ -7,7 +7,7 @@
     <item
         android:id="@+id/search_fragment"
         android:icon="@drawable/selector_menu_search"
-        android:title="검색" />
+        android:title="탐색" />
     <item
         android:id="@+id/course_fragment"
         android:icon="@drawable/selector_menu_course"
