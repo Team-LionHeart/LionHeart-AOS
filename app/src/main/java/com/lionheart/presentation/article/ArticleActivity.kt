@@ -1,6 +1,5 @@
 package com.lionheart.presentation.article
 
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -11,6 +10,7 @@ import com.lionheart.core.uistate.UiState.Failure
 import com.lionheart.core.uistate.UiState.Success
 import com.lionheart.databinding.ActivityArticleBinding
 import com.lionheart.presentation.search.category.SearchDetailActivity.Companion.ARTICLE_ID
+import com.lionheart.presentation.search.category.SearchDetailActivity.Companion.IS_MARKED
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -21,31 +21,15 @@ class ArticleActivity : BindingActivity<ActivityArticleBinding>(R.layout.activit
     private lateinit var articleAdaptor: ArticleAdaptor
     private val viewModel by viewModels<ArticleViewModel>()
     override fun constructLayout() {
+        binding.vm = viewModel
         setAdaptor()
         getArticleComponents()
-//        getArticleComponentsState()
-        setBookmak()
-        binding.ivArticleBookmark.visibility = View.GONE
+        getArticleComponentsState()
     }
 
     override fun addListeners() {
         listenScroll()
         onClickBackButton()
-        onTouchBookmark()
-    }
-
-    override fun addObservers() {
-        viewModel.bookmarked.observe(this@ArticleActivity) {
-            if (it) {
-                binding.ivArticleBookmark.setImageResource(R.drawable.ic_search_detail_bookmark_fill)
-            } else {
-                binding.ivArticleBookmark.setImageResource(R.drawable.ic_search_detail_bookmark_empty)
-            }
-        }
-    }
-
-    private fun setBookmak() {
-        viewModel.setBookmark()
     }
 
     private fun setAdaptor() {
@@ -67,10 +51,12 @@ class ArticleActivity : BindingActivity<ActivityArticleBinding>(R.layout.activit
                 }
 
                 is Success -> {
-//                    Timber.tag("먼ㅇ히ㅏ머농ㄹㅗㅁㄴ이ㅓㄹ").d(event.data.toString())
-                    Log.d("먼ㅇ히ㅏ머농ㄹㅗㅁㄴ이ㅓㄹ", event.data.toString())
-                    binding.data = event.data
-                    articleAdaptor.submitList(event.data.contents)
+                    val articleId = intent.getIntExtra(ARTICLE_ID, 1)
+                    val data = event.data
+                    viewModel.setBookmark(data.isMarked)
+                    binding.data = data
+                    articleAdaptor.submitList(data.contents)
+                    viewModel.bookmarked.value?.let { onTouchBookmark(articleId.toLong(), it.not()) }
                 }
             }
         }.launchIn(lifecycleScope)
@@ -105,9 +91,12 @@ class ArticleActivity : BindingActivity<ActivityArticleBinding>(R.layout.activit
         }
     }
 
-    private fun onTouchBookmark() {
+    private fun onTouchBookmark(articleId: Long, isMarked: Boolean) {
         binding.ivArticleBookmark.setOnClickListener {
             viewModel.swtich()
+
+            viewModel.switchBookmark(articleId, isMarked)
+            setResult(RESULT_OK)
         }
     }
 }
