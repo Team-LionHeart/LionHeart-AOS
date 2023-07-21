@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <variable
+            name="vm"
+            type="com.lionheart.presentation.article.ArticleViewModel" />
+
         <variable
             name="data"
             type="com.lionheart.domain.entity.ArticleDetail" />
@@ -72,9 +77,9 @@
 
                             <ImageView
                                 android:id="@+id/iv_article_main"
+                                imageUrl="@{data.mainImageUrl}"
                                 android:layout_width="match_parent"
                                 android:layout_height="216dp"
-                                imageUrl="@{data.mainImageUrl}"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/img_article_main_example"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -93,15 +98,14 @@
 
                             <ImageView
                                 android:id="@+id/iv_article_bookmark"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginTop="10dp"
                                 android:layout_width="36dp"
                                 android:layout_height="0dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:src="@{vm.bookmarked ? @drawable/ic_search_detail_bookmark_fill : @drawable/ic_search_detail_bookmark_empty}"
                                 app:layout_constraintDimensionRatio="1"
-                                android:src="@drawable/ic_search_detail_bookmark_empty"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                />
+                                app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -148,9 +152,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
-                        android:overScrollMode="never"
-
                         android:nestedScrollingEnabled="false"
+
+                        android:overScrollMode="never"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                 </LinearLayout>
@@ -164,10 +168,10 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/black"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:shapeAppearance="@null"
-                android:visibility="invisible"
                 app:srcCompat="@drawable/ic_article_go_up" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
