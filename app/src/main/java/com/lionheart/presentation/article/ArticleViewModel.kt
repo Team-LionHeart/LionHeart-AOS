@@ -34,7 +34,6 @@ class ArticleViewModel @Inject constructor(
 
     fun getArticleDetail(articleId: Int) {
         viewModelScope.launch {
-            Timber.tag("안녕").d(articleId.toString())
             articleRepository.getArticleDetail(articleId)
                 .catch { error ->
                     when (error) {
@@ -50,21 +49,26 @@ class ArticleViewModel @Inject constructor(
                             LionUnKnownException("알 수 없는 에러 : $error")
                         }
                     }
-                    Timber.tag("뭐하는거니").d(error)
                 }
                 .collect { response ->
-                    Log.d("안녕하세요요요요요", response.toString())
                     _getArticleDetailState.emit(Success(response))
                 }
         }
     }
+
     fun swtich() {
         bookmarked.value?.apply {
             _bookmarked.value = !this
         }
     }
 
-    fun setBookmark() {
-        _bookmarked.value = false
+    fun switchBookmark(articleId: Long, switching: Boolean) {
+        viewModelScope.launch {
+            articleRepository.switchBookmark(articleId, switching)
+        }
+    }
+
+    fun setBookmark(isMarked: Boolean) {
+        _bookmarked.value = isMarked
     }
 }
