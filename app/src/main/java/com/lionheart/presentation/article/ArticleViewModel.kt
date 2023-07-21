@@ -2,6 +2,8 @@ package com.lionheart.presentation.article
 
 import android.accounts.NetworkErrorException
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lionheart.LionUnKnownException
@@ -26,6 +28,9 @@ class ArticleViewModel @Inject constructor(
 ) : ViewModel() {
     private val _getArticleDetailState = MutableSharedFlow<UiState<ArticleDetail>>()
     val getArticleDetailState = _getArticleDetailState.asSharedFlow()
+    private val _bookmarked = MutableLiveData<Boolean>()
+    val bookmarked: LiveData<Boolean>
+        get() = _bookmarked
 
     fun getArticleDetail(articleId: Int) {
         viewModelScope.launch {
@@ -52,5 +57,14 @@ class ArticleViewModel @Inject constructor(
                     _getArticleDetailState.emit(Success(response))
                 }
         }
+    }
+    fun swtich() {
+        bookmarked.value?.apply {
+            _bookmarked.value = !this
+        }
+    }
+
+    fun setBookmark() {
+        _bookmarked.value = false
     }
 }
