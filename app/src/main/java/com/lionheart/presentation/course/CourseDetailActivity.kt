@@ -47,7 +47,12 @@ class CourseDetailActivity :
 
     private fun initRecyclerView() {
         _courseWeeklyTitleAdapter = CourseDetailTitleAdapter(viewModel.tempHeader)
-        _courseWeeklyAdapter = CourseDetailAdapter()
+        _courseWeeklyAdapter = CourseDetailAdapter { articleId, switching ->
+            viewModel.switchBookmark(
+                articleId,
+                switching,
+            )
+        }
         getWeeklyArticleState()
 
         with(binding.rvCourseWeekly) {

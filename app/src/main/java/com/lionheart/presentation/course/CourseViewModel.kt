@@ -12,6 +12,7 @@ import com.lionheart.core.uistate.UiState.Success
 import com.lionheart.data.repository.CourseRepositoryImpl
 import com.lionheart.domain.entity.Course
 import com.lionheart.domain.entity.CurriculumProgress
+import com.lionheart.domain.repository.ArticleRepository
 import com.lionheart.domain.repository.CourseRepository
 import com.lionheart.domain.repository.CurriculumRepository
 import com.lionheart.presentation.search.category.SearchDetailViewModel.Companion.NETWORK_ERROR

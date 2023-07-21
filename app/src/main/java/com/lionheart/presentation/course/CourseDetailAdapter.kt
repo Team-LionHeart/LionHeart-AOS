@@ -9,7 +9,9 @@ import com.lionheart.core.view.ItemDiffCallback
 import com.lionheart.databinding.ItemCourseDetailThumbnailBinding
 import com.lionheart.domain.entity.Article
 
-class CourseDetailAdapter :
+class CourseDetailAdapter(
+    private val onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+) :
     ListAdapter<Article, RecyclerView.ViewHolder>(diffUtil) {
     private val bookmarkStatus = SparseBooleanArray()
 
@@ -20,7 +22,11 @@ class CourseDetailAdapter :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as CourseWeeklyViewHolder).onBind(getItem(position), bookmarkStatus)
+        (holder as CourseWeeklyViewHolder).onBind(
+            getItem(position),
+            bookmarkStatus,
+            onClickBookmark,
+        )
     }
 
     companion object {
@@ -33,21 +39,29 @@ class CourseDetailAdapter :
 
 class CourseWeeklyViewHolder(private val binding: ItemCourseDetailThumbnailBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun onBind(data: Article, bookmarkStatus: SparseBooleanArray) {
+    fun onBind(
+        data: Article,
+        bookmarkStatus: SparseBooleanArray,
+        onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+    ) {
         binding.data = data
         bookmarkStatus.put(layoutPosition, data.isMarked)
-        initBookmark(data, bookmarkStatus)
+        initBookmark(data, bookmarkStatus, onClickBookmark)
     }
 
-    private fun initBookmark(data: Article, bookmarkStatus: SparseBooleanArray) {
+    private fun initBookmark(
+        data: Article,
+        bookmarkStatus: SparseBooleanArray,
+        onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+    ) {
         with(binding.btnCourseWeeklyThumbnailBookmark) {
             isSelected = data.isMarked
             setOnClickListener {
                 bookmarkStatus.put(position, isSelected)
                 isSelected = isSelected.not()
                 // 북마크 저장 작업
+                onClickBookmark(data.articleId, isSelected)
             }
         }
     }
 }
-

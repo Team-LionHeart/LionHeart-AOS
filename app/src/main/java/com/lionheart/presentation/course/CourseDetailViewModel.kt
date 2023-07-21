@@ -55,4 +55,10 @@ class CourseDetailViewModel @Inject constructor(
                 }
         }
     }
+
+    fun switchBookmark(articleId: Long, switching: Boolean) {
+        viewModelScope.launch {
+            articleRepository.switchBookmark(articleId, switching)
+        }
+    }
 }
