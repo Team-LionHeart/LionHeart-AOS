@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import com.lionheart.domain.entity.BabyNameWarning
-import timber.log.Timber
-import java.util.regex.Pattern
 
 class BabyNameViewModel : ViewModel() {
     val _name = MutableLiveData("")

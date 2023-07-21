@@ -19,18 +19,11 @@
         <activity android:name=".presentation.auth.splash.SplashActivity"
             android:exported="true"/>
         <activity
-            android:name=".presentation.auth.onboarding.temp.BabyNameActivity"
+            android:name=".presentation.auth.onboarding.BabyNameActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize|stateAlwaysVisible" />
         <activity
-            android:name=".presentation.auth.onboarding.temp.PregnantWeekActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize|stateAlwaysVisible" />
-        <activity
-            android:name=".presentation.auth.onboarding.RegisterDoneActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.auth.onboarding.OnboardingActivity"
+            android:name=".presentation.auth.onboarding.PregnantWeekActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize|stateAlwaysVisible">
             <intent-filter>
@@ -39,6 +32,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.auth.onboarding.RegisterDoneActivity"
+            android:exported="false" />
         <activity
             android:name=".presentation.bookmark.BookMarkActivity"
             android:exported="true" />

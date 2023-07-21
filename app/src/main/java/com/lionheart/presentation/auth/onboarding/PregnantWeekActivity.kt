@@ -1,16 +1,13 @@
-package com.lionheart.presentation.auth.onboarding.temp
+package com.lionheart.presentation.auth.onboarding
 
 import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
 import androidx.activity.viewModels
 import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
 import com.lionheart.databinding.ActivityPregnantWeekBinding
-import com.lionheart.presentation.auth.onboarding.PregnantWeekViewModel
-import com.lionheart.presentation.auth.splash.LoginActivity
 import timber.log.Timber
 
 class PregnantWeekActivity :
@@ -42,7 +39,7 @@ class PregnantWeekActivity :
     }
 
     private fun watchInput() {
-        binding.etPregnantWeek.addTextChangedListener(object: TextWatcher {
+        binding.etPregnantWeek.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 binding.tvPregnantWeekWarning.text = "1에서 40 사이의 숫자를 입력해주세요."
                 if (viewModel.isValidWeek.value == true) {
@@ -51,6 +48,7 @@ class PregnantWeekActivity :
                     binding.btnPregnantWeekNext.visibility = View.GONE
                 }
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })

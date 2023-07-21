@@ -6,7 +6,7 @@ import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
 import com.lionheart.databinding.ActivityLoginBinding
 import com.lionheart.presentation.MainActivity
-import com.lionheart.presentation.auth.onboarding.OnboardingActivity
+import com.lionheart.presentation.auth.onboarding.PregnantWeekActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,7 +47,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                 finish()
             },
             goOnBoarding = {
-                startActivity(Intent(this@LoginActivity, OnboardingActivity::class.java))
+                startActivity(Intent(this@LoginActivity, PregnantWeekActivity::class.java))
                 finish()
             }
         )

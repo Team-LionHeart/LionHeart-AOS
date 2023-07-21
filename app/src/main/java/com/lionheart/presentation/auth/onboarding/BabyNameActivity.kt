@@ -1,16 +1,13 @@
-package com.lionheart.presentation.auth.onboarding.temp
+package com.lionheart.presentation.auth.onboarding
 
 import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
 import androidx.activity.viewModels
 import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
 import com.lionheart.databinding.ActivityBabyNameBinding
-import com.lionheart.presentation.auth.onboarding.BabyNameViewModel
-import com.lionheart.presentation.auth.onboarding.RegisterDoneActivity
 import timber.log.Timber
 
 class BabyNameActivity : BindingActivity<ActivityBabyNameBinding>(R.layout.activity_baby_name) {
@@ -45,7 +42,7 @@ class BabyNameActivity : BindingActivity<ActivityBabyNameBinding>(R.layout.activ
     }
 
     private fun watchInput() {
-        binding.etBabyName.addTextChangedListener(object: TextWatcher {
+        binding.etBabyName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 binding.tvBabyNameWarning.visibility = View.VISIBLE
                 binding.btnBabyNameClear.visibility = View.VISIBLE
@@ -55,6 +52,7 @@ class BabyNameActivity : BindingActivity<ActivityBabyNameBinding>(R.layout.activ
                     binding.btnBabyNameNext.visibility = View.GONE
                 }
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
