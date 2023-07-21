@@ -12,6 +12,10 @@
         <variable
             name="todayCard"
             type="com.lionheart.domain.entity.TodayCard" />
+
+        <variable
+            name="data"
+            type="com.lionheart.domain.entity.Today" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,19 +39,18 @@
                 android:id="@+id/tv_today_welcome_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:text="@{user.nickname}"
+                android:text="@{data.babyNickname}"
                 android:textAppearance="@style/TextAppearance.LionHeart.Head1"
-
                 android:textColor="@color/gray_100"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="사랑이 아빠" />
+                tools:text="사랑이" />
 
             <TextView
                 android:id="@+id/tv_today_welcome_name_static"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:text="님"
+                android:text=" 아빠님"
                 android:textAppearance="@style/TextAppearance.LionHeart.Head1"
                 app:layout_constraintStart_toEndOf="@id/tv_today_welcome_nickname"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -80,8 +83,17 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/img_login_background"
                 android:scaleType="centerCrop">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    imageUrl="@{data.mainImageUrl}"
+                    android:scaleType="centerCrop"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -129,7 +141,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingHorizontal="16dp"
-                            android:text="@{todayCard.week}"
+                            android:text="@{@string/today_week(data.week, data.day)}"
                             android:textAppearance="@style/TextAppearance.LionHeart.Body2_Regular"
                             android:textColor="@color/lion_red"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -146,7 +158,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:paddingStart="20dp"
-                        android:text="@{todayCard.title}"
+                        android:text="@{data.title}"
                         android:textAppearance="@style/TextAppearance.LionHeart.Head2"
                         app:layout_constraintBottom_toTopOf="@id/layout_today_card_wording_divider"
                         tools:text="출산카드 신청하기\nA to Z" />
@@ -172,7 +184,7 @@
                         android:layout_height="0dp"
                         android:paddingStart="20dp"
                         android:paddingEnd="0dp"
-                        android:text="@{todayCard.detail}"
+                        android:text="@{data.editorNoteContent}"
                         android:textAppearance="@style/TextAppearance.LionHeart.Body2_Regular"
                         android:textColor="@color/gray_400"
                         app:layout_constraintBottom_toBottomOf="parent"
