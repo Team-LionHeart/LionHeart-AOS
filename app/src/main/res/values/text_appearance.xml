@@ -19,7 +19,7 @@
     </style>
     <style name="TextAppearance.LionHeart.Head3">
         <item name="android:textSize">20sp</item>
-        <item name="android:lineHeight">28dp</item>
+        <item name="android:lineHeight">32dp</item>
         <item name="android:fontFamily">@font/pretendard_semibold</item>
     </style>
     <style name="TextAppearance.LionHeart.Head4">
@@ -63,6 +63,11 @@
     <style name="TextAppearance.LionHeart.Body2_Regular">
         <item name="android:textSize">16sp</item>
         <item name="android:lineHeight">24dp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+    <style name="TextAppearance.LionHeart.Body2_Regular_2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">26dp</item>
         <item name="android:fontFamily">@font/pretendard_regular</item>
     </style>
     <style name="TextAppearance.LionHeart.Body3_Medium">
