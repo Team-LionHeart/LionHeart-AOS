@@ -8,6 +8,10 @@
         <variable
             name="vm"
             type="com.lionheart.presentation.course.CourseViewModel" />
+
+        <variable
+            name="data"
+            type="com.lionheart.domain.entity.CurriculumProgress" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +37,7 @@
                 android:background="@drawable/shape_course_user_text"
                 android:paddingHorizontal="4dp"
                 android:paddingVertical="2dp"
-                android:text="27"
+                android:text="@{String.valueOf(data.week)}"
                 android:textAppearance="@style/TextAppearance.LionHeart.Head3" />
 
             <TextView
@@ -50,7 +54,7 @@
                 android:background="@drawable/shape_course_user_text"
                 android:paddingHorizontal="4dp"
                 android:paddingVertical="2dp"
-                android:text="2"
+                android:text="@{String.valueOf(data.day)}"
                 android:textAppearance="@style/TextAppearance.LionHeart.Head3" />
 
             <TextView
@@ -114,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pretendard_light"
                 android:lineHeight="22dp"
-                android:text="D-126"
+                android:text="@{@string/course_dday(data.remainingDay)}"
                 android:textSize="14sp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -129,6 +133,7 @@
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:paddingBottom="80dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
