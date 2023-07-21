@@ -1,13 +1,12 @@
 package com.lionheart.data.repository
 
+import android.util.Log
 import com.lionheart.data.datasource.ArticleSource
-import com.lionheart.data.model.response.BookMarkListResponse
 import com.lionheart.domain.entity.Article
 import com.lionheart.domain.entity.ArticleCategory
 import com.lionheart.domain.entity.ArticleDetail
 import com.lionheart.domain.entity.BookmarkArticle
 import com.lionheart.domain.entity.TodayArticle
-import com.lionheart.domain.entity.WeeklyCourse
 import com.lionheart.domain.repository.ArticleRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -27,8 +26,10 @@ class ArticleRepositoryImpl @Inject constructor(
             }
         }
 
-    override suspend fun getArticleDetail(articleId: Long): ArticleDetail {
-        TODO("Not yet implemented")
+    override suspend fun getArticleDetail(articleId: Int): Flow<ArticleDetail> = flow {
+        articleSource.getArticleDetail(articleId).data?.let {
+            emit(it.toArticleDetailEntity())
+        }
     }
 
     override suspend fun getTodayArticle(): TodayArticle {
@@ -47,5 +48,4 @@ class ArticleRepositoryImpl @Inject constructor(
     override suspend fun getBookmarks(): Flow<BookmarkArticle> = flow {
         articleSource.getBookmarkArticle().data?.let { emit(it.toBookmarkArticleEntity()) }
     }
-
 }

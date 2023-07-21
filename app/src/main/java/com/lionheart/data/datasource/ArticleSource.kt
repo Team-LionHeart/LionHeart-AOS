@@ -2,6 +2,7 @@ package com.lionheart.data.datasource
 
 import com.lionheart.data.model.request.BookMarkRequest
 import com.lionheart.data.service.ArticleService
+import com.lionheart.domain.entity.Article
 import com.lionheart.domain.entity.ArticleCategory
 import javax.inject.Inject
 
@@ -15,6 +16,7 @@ class ArticleSource @Inject constructor(
 
     suspend fun getBookmarkArticle() = articleService.getBookmarks()
 
-    suspend fun getWeeklyArticle(week: Long) =
-        articleService.getWeeklyArticle(week)
+    suspend fun getWeeklyArticle(week: Long) = articleService.getWeeklyArticle(week)
+
+    suspend fun getArticleDetail(articleId: Int) = articleService.getArticleDetail(articleId)
 }
