@@ -56,4 +56,13 @@
 ┣ 📜 LionHeart.kt
 ```
 
+## 기술 스텍
+- kotlin
+- coroutine
+
+
+
+https://github.com/gosopt-LionHeart/LionHeart-AOS/assets/88091704/7a26c154-80c7-454f-8bae-906e6c71f21a
+
+
 
