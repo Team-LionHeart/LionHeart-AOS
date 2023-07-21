@@ -10,6 +10,7 @@ import com.lionheart.domain.entity.BookmarkArticle
 
 class BookmarkArticleAdapter(
     private val onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+    private val onClickArticle: (articleId: Int) -> Unit
 ) : ListAdapter<BookmarkArticle.ArticleSummary, BookmarkArticleViewHolder>(
     itemBookmarkArticleDiffUtil,
 ) {
@@ -24,6 +25,9 @@ class BookmarkArticleAdapter(
     }
 
     override fun onBindViewHolder(holder: BookmarkArticleViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            onClickArticle(getItem(position).articleId.toInt())
+        }
         holder.onBind(getItem(position), onClickBookmark)
     }
 
