@@ -8,10 +8,9 @@ import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
 import com.lionheart.core.uistate.UiState
 import com.lionheart.databinding.ActivityRegisterDoneBinding
-import com.lionheart.domain.entity.SignUpInfo
+import com.lionheart.domain.entity.SocialType
 import com.lionheart.presentation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import timber.log.Timber
@@ -37,6 +36,12 @@ class RegisterDoneActivity :
             Intent(this, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }.run(::startActivity)
+            viewModel.signup(
+                socialType = SocialType.KAKAO,
+                socialToken = intent.getStringExtra("socialToken")!!,
+                week = intent.getStringExtra("week")!!.toInt(),
+                name = intent.getStringExtra("name")!!
+            )
         }
     }
 

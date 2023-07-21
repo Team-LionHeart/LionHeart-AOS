@@ -31,6 +31,7 @@ class PregnantWeekActivity :
             Timber.d("pregnant week : ${binding.etPregnantWeek.text}")
             Intent(this, BabyNameActivity::class.java).apply {
                 putExtra("week", binding.etPregnantWeek.text.toString())
+                putExtra("socialToken", intent.getStringExtra("socialToken"))
             }.run(::startActivity)
         }
         binding.layoutPregnantWeekToolbar.btnBack.setOnClickListener {

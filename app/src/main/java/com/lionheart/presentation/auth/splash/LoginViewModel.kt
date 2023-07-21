@@ -35,7 +35,7 @@ class LoginViewModel @Inject constructor(
         accessToken: String,
         refreshToken: String,
         goMain: () -> Unit,
-        goOnBoarding: () -> Unit
+        goOnBoarding: (String) -> Unit
     ) {
         viewModelScope.launch {
             getFcmTokenUseCase { getFCMToken ->
@@ -45,7 +45,7 @@ class LoginViewModel @Inject constructor(
                             when (error) {
                                 is HttpException -> {
                                     if (error.code() == 404) {
-                                        goOnBoarding.invoke()
+                                        goOnBoarding.invoke(accessToken)
                                     }
                                     _apiAccessToken.emit(UiState.Failure(error.code()))
                                 }

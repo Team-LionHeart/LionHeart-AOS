@@ -61,6 +61,7 @@ class BabyNameActivity : BindingActivity<ActivityBabyNameBinding>(R.layout.activ
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 putExtra("week", intent.getStringExtra("week"))
                 putExtra("name", binding.etBabyName.text.toString())
+                putExtra("socialToken",  intent.getStringExtra("socialToken"))
             }.run(::startActivity)
         }
     }

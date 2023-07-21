@@ -46,8 +46,10 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                 startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 finish()
             },
-            goOnBoarding = {
-                startActivity(Intent(this@LoginActivity, PregnantWeekActivity::class.java))
+            goOnBoarding = { socialToken ->
+                val toOnBoarding = Intent(this@LoginActivity, PregnantWeekActivity::class.java)
+                toOnBoarding.putExtra("socialToken", socialToken)
+                startActivity(toOnBoarding)
                 finish()
             }
         )
