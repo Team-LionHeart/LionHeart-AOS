@@ -15,7 +15,7 @@
     <string name="challenge_day">%s일째 도전 중</string>
     <string name="onboarding_register_done">%s아빠님\n반가워요!</string>
     <string name="search_detail_required_time">%s분 분량</string>
-
+    <string name="article_author">by. %s</string>
     <!-- bookmark -->
     <string name="bookmark_empty_bookmark_list">아직 담은 아티클이 없어요.\n다른 아티클을 읽어볼까요?</string>
 </resources>

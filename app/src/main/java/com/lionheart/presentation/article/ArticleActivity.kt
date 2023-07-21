@@ -1,27 +1,69 @@
 package com.lionheart.presentation.article
 
+import android.util.Log
 import android.view.View
+import androidx.activity.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
+import com.lionheart.core.uistate.UiState.Failure
+import com.lionheart.core.uistate.UiState.Success
 import com.lionheart.databinding.ActivityArticleBinding
+import com.lionheart.presentation.search.category.SearchDetailActivity.Companion.ARTICLE_ID
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 
+@AndroidEntryPoint
 class ArticleActivity : BindingActivity<ActivityArticleBinding>(R.layout.activity_article) {
-    private lateinit var adaptor: ArticleAdaptor
+    private lateinit var articleAdaptor: ArticleAdaptor
+    private val viewModel by viewModels<ArticleViewModel>()
     override fun constructLayout() {
         setAdaptor()
+        getArticleComponents()
+//        getArticleComponentsState()
     }
 
     override fun addListeners() {
         listenScroll()
+        onClickBackButton()
     }
 
     private fun setAdaptor() {
-        adaptor = ArticleAdaptor()
-        binding.rvArticleMain.adapter = adaptor
-        adaptor.submitList(getArticleComponents())
+        articleAdaptor = ArticleAdaptor()
+        getArticleComponentsState()
+        binding.rvArticleMain.adapter = articleAdaptor
     }
 
-    private fun getArticleComponents() = ArticleMocker.mockChapter1()
+    private fun getArticleComponents() {
+        val articleId = intent.getIntExtra(ARTICLE_ID, 1)
+        viewModel.getArticleDetail(articleId)
+    }
+
+    private fun getArticleComponentsState() {
+        viewModel.getArticleDetailState.flowWithLifecycle(lifecycle).onEach { event ->
+            when (event) {
+                is Failure -> {
+                    Timber.tag("getArticleComponentsState").d(event.code.toString())
+                }
+
+                is Success -> {
+//                    Timber.tag("먼ㅇ히ㅏ머농ㄹㅗㅁㄴ이ㅓㄹ").d(event.data.toString())
+                    Log.d("먼ㅇ히ㅏ머농ㄹㅗㅁㄴ이ㅓㄹ", event.data.toString())
+                    binding.data = event.data
+                    articleAdaptor.submitList(event.data.contents)
+                }
+            }
+        }.launchIn(lifecycleScope)
+    }
+
+    private fun onClickBackButton() {
+        binding.ivArticleTopX.setOnClickListener {
+            if(!isFinishing) finish()
+        }
+    }
 
     private fun listenScroll() {
         binding.layoutArticleScroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
