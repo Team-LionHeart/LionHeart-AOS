@@ -14,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import timber.log.Timber
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_course) {
@@ -21,7 +22,7 @@ class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_
     private var _courseAdapter: CourseAdapter? = null
     private val courseAdapter
         get() = requireNotNull(_courseAdapter) { Timber.e("adapter not initialized") }
-    private var week: Int? = null
+//    private var week: Int? = null
 
     override fun constructLayout() {
         // databinding
@@ -31,48 +32,19 @@ class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_
         }
         viewModel.getCourseProgress()
         getCourseProgressState()
-        initRecyclerView()
-        viewModel.setData()
-    }
-
-    private fun initRecyclerView() {
-        viewModel.courseList.observe(this@CourseFragment) {
-            _courseAdapter = CourseAdapter(it) { week, image -> goToDetail(week, image) }
-
-            with(binding.rvCourseContent) {
-                adapter = courseAdapter
-                layoutManager = LinearLayoutManager(context)
-                week?.let { week ->
-                    viewModel.getScrollStartPosition(
-                        week,
-                    )
-                }?.let { it ->
-                    (layoutManager as LinearLayoutManager).scrollToPosition(
-                        it,
-                    )
-                }
-            }
-        }
-    }
-
-    private fun goToDetail(week: Long, image: String) {
-        Intent(activity, CourseDetailActivity::class.java).apply {
-            putExtra(WEEK, week)
-            putExtra("imageUrl", image)
-        }.run(::startActivity)
     }
 
     private fun getCourseProgressState() {
+        var week: Int = 0
         viewModel.courseProgressState.flowWithLifecycle(lifecycle).onEach { event ->
             when (event) {
                 is Failure -> {
                     Timber.tag("getCourseProgressState").d(event.code.toString())
                 }
-
                 is Success -> {
                     val response = event.data
                     binding.data = response
-                    week = response.week.toInt() + 10
+                    week = response.week.toInt()
                     when (response.week / 4 + 1) {
                         2.toLong() -> {
                             binding.lottieCourseProgress.setAnimation(R.raw.progressbar_2m)
@@ -110,9 +82,31 @@ class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_
                             binding.lottieCourseProgress.setAnimation(R.raw.progressbar_10m)
                         }
                     }
+                    viewModel.setData()
+                    initRecyclerView(week)
                 }
             }
         }.launchIn(lifecycleScope)
+
+    }
+
+    private fun initRecyclerView(week: Int) {
+        viewModel.courseList.observe(this@CourseFragment) {
+            _courseAdapter = CourseAdapter(it) { week, image -> goToDetail(week, image) }
+
+            with(binding.rvCourseContent) {
+                adapter = courseAdapter
+                layoutManager = LinearLayoutManager(context)
+                (layoutManager as LinearLayoutManager).scrollToPosition(viewModel.getScrollStartPosition(week))
+            }
+        }
+    }
+
+    private fun goToDetail(week: Long, image: String) {
+        Intent(activity, CourseDetailActivity::class.java).apply {
+            putExtra(WEEK, week)
+            putExtra("imageUrl", image)
+        }.run(::startActivity)
     }
 
     override fun onDestroyView() {
