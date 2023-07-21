@@ -34,6 +34,7 @@ class BabyNameActivity : BindingActivity<ActivityBabyNameBinding>(R.layout.activ
             Intent(this, RegisterDoneActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 putExtra("week", intent.getStringExtra("week"))
+                putExtra("name", binding.etBabyName.text.toString())
             }.run(::startActivity)
         }
         binding.layoutBabyNameToolbar.btnBack.setOnClickListener {
