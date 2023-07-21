@@ -70,8 +70,8 @@ class CourseDetailActivity :
                 )
             },
             { articleId ->
-            },
                 intentToArticleDetail(articleId)
+            },
         )
         getWeeklyArticleState()
 
