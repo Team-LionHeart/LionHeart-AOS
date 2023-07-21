@@ -84,6 +84,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="0dp"
                                 android:layout_marginTop="12dp"
+                                style="@style/TextAppearance.LionHeart.Body4"
+                                android:textColor="@color/gray_500"
                                 android:text="@{data.mainImageCaption}"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
