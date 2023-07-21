@@ -16,6 +16,8 @@ class ArticleSource @Inject constructor(
 
     suspend fun getBookmarkArticle() = articleService.getBookmarks()
 
+    suspend fun getTodayArticle() = articleService.getTodayArticle()
+    
     suspend fun getWeeklyArticle(week: Long) = articleService.getWeeklyArticle(week)
 
     suspend fun getArticleDetail(articleId: Int) = articleService.getArticleDetail(articleId)

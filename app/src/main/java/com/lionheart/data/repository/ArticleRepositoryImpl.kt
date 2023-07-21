@@ -6,6 +6,7 @@ import com.lionheart.domain.entity.Article
 import com.lionheart.domain.entity.ArticleCategory
 import com.lionheart.domain.entity.ArticleDetail
 import com.lionheart.domain.entity.BookmarkArticle
+import com.lionheart.domain.entity.Today
 import com.lionheart.domain.entity.TodayArticle
 import com.lionheart.domain.repository.ArticleRepository
 import kotlinx.coroutines.flow.Flow
@@ -32,8 +33,8 @@ class ArticleRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getTodayArticle(): TodayArticle {
-        TODO("Not yet implemented")
+    override suspend fun getTodayArticle(): Flow<Today> = flow {
+        articleSource.getTodayArticle().data?.toTodayEntity()?.let { emit(it) }
     }
 
     override suspend fun getWeeklyArticle(week: Long): Flow<List<Article>> = flow {
