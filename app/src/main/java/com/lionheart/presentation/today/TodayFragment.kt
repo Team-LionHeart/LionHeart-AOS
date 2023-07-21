@@ -1,5 +1,6 @@
 package com.lionheart.presentation.today
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -8,6 +9,8 @@ import com.lionheart.core.binding.BindingFragment
 import com.lionheart.core.uistate.UiState.Failure
 import com.lionheart.core.uistate.UiState.Success
 import com.lionheart.databinding.FragmentTodayBinding
+import com.lionheart.presentation.article.ArticleActivity
+import com.lionheart.presentation.search.category.SearchDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -32,8 +35,17 @@ class TodayFragment : BindingFragment<FragmentTodayBinding>(R.layout.fragment_to
 
                 is Success -> {
                     binding.data = event.data
+                    binding.layoutTodayCard.setOnClickListener {
+                        intentToArticleDetail(event.data.articleId.toInt())
+                    }
                 }
             }
         }.launchIn(lifecycleScope)
+    }
+
+    private fun intentToArticleDetail(articleId: Int) {
+        Intent(context, ArticleActivity::class.java).apply {
+            putExtra(SearchDetailActivity.ARTICLE_ID, articleId)
+        }.run(::startActivity)
     }
 }
