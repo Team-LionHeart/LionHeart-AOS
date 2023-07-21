@@ -11,6 +11,7 @@ import com.lionheart.domain.entity.Article
 
 class CourseDetailAdapter(
     private val onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+    private val onClickArticle: (articleId: Int) -> Unit
 ) :
     ListAdapter<Article, RecyclerView.ViewHolder>(diffUtil) {
     private val bookmarkStatus = SparseBooleanArray()
@@ -22,6 +23,9 @@ class CourseDetailAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            onClickArticle(getItem(position).articleId.toInt())
+        }
         (holder as CourseWeeklyViewHolder).onBind(
             getItem(position),
             bookmarkStatus,

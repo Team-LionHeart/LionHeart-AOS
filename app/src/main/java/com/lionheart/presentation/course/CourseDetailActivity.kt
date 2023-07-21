@@ -1,17 +1,18 @@
 package com.lionheart.presentation.course
 
+import android.content.Intent
 import androidx.activity.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
-import com.lionheart.core.intent.getParcelable
-import com.lionheart.core.uistate.UiState
 import com.lionheart.core.uistate.UiState.Failure
 import com.lionheart.core.uistate.UiState.Success
 import com.lionheart.databinding.ActivityCourseWeeklyBinding
+import com.lionheart.presentation.article.ArticleActivity
 import com.lionheart.presentation.course.CourseFragment.Companion.WEEK
+import com.lionheart.presentation.search.category.SearchDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -47,17 +48,28 @@ class CourseDetailActivity :
 
     private fun initRecyclerView() {
         _courseWeeklyTitleAdapter = CourseDetailTitleAdapter(viewModel.tempHeader)
-        _courseWeeklyAdapter = CourseDetailAdapter { articleId, switching ->
-            viewModel.switchBookmark(
-                articleId,
-                switching,
-            )
-        }
+        _courseWeeklyAdapter = CourseDetailAdapter(
+            { articleId, switching ->
+                viewModel.switchBookmark(
+                    articleId,
+                    switching,
+                )
+            },
+            { articleId ->
+                intentToArticleDetail(articleId)
+            },
+        )
         getWeeklyArticleState()
 
         with(binding.rvCourseWeekly) {
             adapter = ConcatAdapter(courseWeeklyTitleAdapter, courseWeeklyAdapter)
         }
+    }
+
+    private fun intentToArticleDetail(articleId: Int) {
+        Intent(this, ArticleActivity::class.java).apply {
+            putExtra(SearchDetailActivity.ARTICLE_ID, articleId)
+        }.run(::startActivity)
     }
 
     private fun getWeeklyArticle() {
