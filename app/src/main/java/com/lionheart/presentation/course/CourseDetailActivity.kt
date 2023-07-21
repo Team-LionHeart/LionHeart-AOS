@@ -1,6 +1,8 @@
 package com.lionheart.presentation.course
 
 import android.content.Intent
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -43,7 +45,7 @@ class CourseDetailActivity :
             // ui
             tvCourseWeeklyTitle.text = resources.getString(
                 R.string.course_weekly_title,
-                intent.getLongExtra("week", 0).toString()
+                intent.getLongExtra("week", 0).toString(),
             )
         }
         initRecyclerView()
@@ -59,18 +61,19 @@ class CourseDetailActivity :
         _courseWeeklyTitleAdapter = CourseDetailTitleAdapter(
             CourseWeek(
                 intent.getLongExtra("week", 0).toInt(),
-                intent.getStringExtra("imageUrl")!!
-            )
+                intent.getStringExtra("imageUrl")!!,
+            ),
         )
         _courseWeeklyAdapter = CourseDetailAdapter(
-            { articleId, switching ->
+            { article, articleId, switching ->
                 viewModel.switchBookmark(
                     articleId,
                     switching,
                 )
+//                article.isMarked = switching
             },
-            { articleId ->
-                intentToArticleDetail(articleId)
+            { articleId, isMarked ->
+                intentToArticleDetail(articleId, isMarked)
             },
         )
         getWeeklyArticleState()
@@ -80,15 +83,25 @@ class CourseDetailActivity :
         }
     }
 
-    private fun intentToArticleDetail(articleId: Int) {
-        Intent(this, ArticleActivity::class.java).apply {
+    private fun intentToArticleDetail(articleId: Int, isMarked: Boolean) {
+        val intent = Intent(this, ArticleActivity::class.java).apply {
             putExtra(SearchDetailActivity.ARTICLE_ID, articleId)
-        }.run(::startActivity)
+            putExtra(SearchDetailActivity.IS_MARKED, isMarked)
+        }
+        getResultBookmark.launch(intent)
     }
 
     private fun getWeeklyArticle() {
         val week = intent.getLongExtra(WEEK, 2)
         viewModel.getCourseArticle(week)
+    }
+
+    private val getResultBookmark = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+    ) { result: ActivityResult ->
+        if (result.resultCode == RESULT_OK) {
+            getWeeklyArticle()
+        }
     }
 
     private fun getWeeklyArticleState() {
