@@ -10,8 +10,8 @@ import com.lionheart.databinding.ItemCourseDetailThumbnailBinding
 import com.lionheart.domain.entity.Article
 
 class CourseDetailAdapter(
-    private val onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
-    private val onClickArticle: (articleId: Int) -> Unit
+    private val onClickBookmark: (article: Article, articleId: Long, switching: Boolean) -> Unit,
+    private val onClickArticle: (articleId: Int, isMarked: Boolean) -> Unit
 ) :
     ListAdapter<Article, RecyclerView.ViewHolder>(diffUtil) {
     private val bookmarkStatus = SparseBooleanArray()
@@ -23,11 +23,12 @@ class CourseDetailAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val article = getItem(position)
         holder.itemView.setOnClickListener {
-            onClickArticle(getItem(position).articleId.toInt())
+            onClickArticle(article.articleId.toInt(), article.isMarked)
         }
         (holder as CourseWeeklyViewHolder).onBind(
-            getItem(position),
+            article,
             bookmarkStatus,
             onClickBookmark,
         )
@@ -46,7 +47,7 @@ class CourseWeeklyViewHolder(private val binding: ItemCourseDetailThumbnailBindi
     fun onBind(
         data: Article,
         bookmarkStatus: SparseBooleanArray,
-        onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+        onClickBookmark: (article: Article, articleId: Long, switching: Boolean) -> Unit,
     ) {
         binding.data = data
         bookmarkStatus.put(layoutPosition, data.isMarked)
@@ -56,15 +57,16 @@ class CourseWeeklyViewHolder(private val binding: ItemCourseDetailThumbnailBindi
     private fun initBookmark(
         data: Article,
         bookmarkStatus: SparseBooleanArray,
-        onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+        onClickBookmark: (article: Article, articleId: Long, switching: Boolean) -> Unit,
     ) {
         with(binding.btnCourseWeeklyThumbnailBookmark) {
             isSelected = data.isMarked
             setOnClickListener {
                 bookmarkStatus.put(position, isSelected)
                 isSelected = isSelected.not()
+                data.isMarked = isSelected
                 // 북마크 저장 작업
-                onClickBookmark(data.articleId, isSelected)
+                onClickBookmark(data, data.articleId, isSelected)
             }
         }
     }
