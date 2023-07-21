@@ -9,7 +9,8 @@ import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
 import com.lionheart.core.uistate.UiState.Failure
 import com.lionheart.core.uistate.UiState.Success
-import com.lionheart.databinding.ActivityCourseWeeklyBinding
+import com.lionheart.databinding.ActivityCourseDetailBinding
+import com.lionheart.domain.entity.CourseWeek
 import com.lionheart.presentation.article.ArticleActivity
 import com.lionheart.presentation.course.CourseFragment.Companion.WEEK
 import com.lionheart.presentation.search.category.SearchDetailActivity
@@ -20,7 +21,7 @@ import timber.log.Timber
 
 @AndroidEntryPoint
 class CourseDetailActivity :
-    BindingActivity<ActivityCourseWeeklyBinding>(R.layout.activity_course_weekly) {
+    BindingActivity<ActivityCourseDetailBinding>(R.layout.activity_course_detail) {
     private val viewModel by viewModels<CourseDetailViewModel>()
     private var _courseWeeklyTitleAdapter: CourseDetailTitleAdapter? = null
     private val courseWeeklyTitleAdapter
@@ -31,11 +32,19 @@ class CourseDetailActivity :
 
     override fun constructLayout() {
         getWeeklyArticle()
-        Timber.d("${intent.getLongExtra("week", 0)}, ${intent.getStringExtra("imageUrl")}")
-        // databinding
+        Timber.tag("course detail")
+            .d("${intent.getLongExtra("week", 0)}, ${intent.getStringExtra("imageUrl")}")
+
         with(binding) {
+            // databinding
             vm = viewModel
             lifecycleOwner = this@CourseDetailActivity
+
+            // ui
+            tvCourseWeeklyTitle.text = resources.getString(
+                R.string.course_weekly_title,
+                intent.getLongExtra("week", 0).toString()
+            )
         }
         initRecyclerView()
     }
@@ -47,7 +56,12 @@ class CourseDetailActivity :
     }
 
     private fun initRecyclerView() {
-        _courseWeeklyTitleAdapter = CourseDetailTitleAdapter(viewModel.tempHeader)
+        _courseWeeklyTitleAdapter = CourseDetailTitleAdapter(
+            CourseWeek(
+                intent.getLongExtra("week", 0).toInt(),
+                intent.getStringExtra("imageUrl")!!
+            )
+        )
         _courseWeeklyAdapter = CourseDetailAdapter(
             { articleId, switching ->
                 viewModel.switchBookmark(
@@ -56,8 +70,8 @@ class CourseDetailActivity :
                 )
             },
             { articleId ->
-                intentToArticleDetail(articleId)
             },
+                intentToArticleDetail(articleId)
         )
         getWeeklyArticleState()
 
