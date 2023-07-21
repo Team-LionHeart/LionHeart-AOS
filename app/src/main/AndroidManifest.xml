@@ -27,6 +27,32 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".presentation.mypage.MyPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.auth.onboarding.RegisterDoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.auth.onboarding.OnboardingActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
+        <activity
+            android:name=".presentation.mypage.MyPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.auth.onboarding.RegisterDoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.auth.onboarding.OnboardingActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".presentation.auth.onboarding.BabyNameActivity"
             android:exported="false"
             android:screenOrientation="portrait"
