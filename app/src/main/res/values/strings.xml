@@ -16,8 +16,17 @@
     <string name="onboarding_register_done">%s아빠님\n반가워요!</string>
     <string name="search_detail_required_time">%s분 분량</string>
     <string name="today_week">%s주 %s일차</string>
-
     <string name="article_author">by. %s</string>
+
     <!-- bookmark -->
     <string name="bookmark_empty_bookmark_list">아직 담은 아티클이 없어요.\n다른 아티클을 읽어볼까요?</string>
+
+    <!-- mypage -->
+    <string name="mypage_notice">공지사항</string>
+    <string name="mypage_faq">FAQ</string>
+    <string name="mypage_qna">1:1 문의</string>
+    <string name="mypage_feedback">서비스 피드백</string>
+    <string name="mypage_terms">이용약관</string>
+    <string name="mypage_protect">개인보호 정책</string>
+
 </resources>
