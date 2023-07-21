@@ -45,6 +45,7 @@ class CourseViewModel @Inject constructor(
         }
     }
 
+    //
     fun getCourseProgress() {
         viewModelScope.launch {
             curriculumRepository.getProgress()
