@@ -5,6 +5,7 @@ import com.lionheart.domain.entity.Article
 import com.lionheart.domain.entity.ArticleCategory
 import com.lionheart.domain.entity.ArticleDetail
 import com.lionheart.domain.entity.BookmarkArticle
+import com.lionheart.domain.entity.Today
 import com.lionheart.domain.entity.TodayArticle
 import com.lionheart.domain.entity.WeeklyCourse
 import kotlinx.coroutines.flow.Flow
@@ -23,7 +24,7 @@ interface ArticleRepository {
     /**
      * 투데이 아티클 조회
      */
-    suspend fun getTodayArticle(): TodayArticle
+    suspend fun getTodayArticle(): Flow<Today>
 
     /**
      * 주차별 아티클 조회
