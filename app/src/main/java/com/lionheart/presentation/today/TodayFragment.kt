@@ -34,9 +34,10 @@ class TodayFragment : BindingFragment<FragmentTodayBinding>(R.layout.fragment_to
                 }
 
                 is Success -> {
-                    binding.data = event.data
+                    val data = event.data
+                    binding.data = data
                     binding.cvTodayCard.setOnClickListener {
-                        intentToArticleDetail(event.data.articleId.toInt())
+                        intentToArticleDetail(data.articleId.toInt())
                     }
                 }
             }
