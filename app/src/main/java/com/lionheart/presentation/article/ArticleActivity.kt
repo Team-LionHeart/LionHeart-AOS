@@ -24,11 +24,27 @@ class ArticleActivity : BindingActivity<ActivityArticleBinding>(R.layout.activit
         setAdaptor()
         getArticleComponents()
 //        getArticleComponentsState()
+        setBookmak()
     }
 
     override fun addListeners() {
         listenScroll()
         onClickBackButton()
+        onTouchBookmark()
+    }
+
+    override fun addObservers() {
+        viewModel.bookmarked.observe(this@ArticleActivity) {
+            if (it) {
+                binding.ivArticleBookmark.setImageResource(R.drawable.ic_search_detail_bookmark_fill)
+            } else {
+                binding.ivArticleBookmark.setImageResource(R.drawable.ic_search_detail_bookmark_empty)
+            }
+        }
+    }
+
+    private fun setBookmak() {
+        viewModel.setBookmark()
     }
 
     private fun setAdaptor() {
@@ -85,6 +101,12 @@ class ArticleActivity : BindingActivity<ActivityArticleBinding>(R.layout.activit
         binding.fbtnArticleGoTop.setOnClickListener {
             binding.layoutArticleScroll.scrollY = 0
             binding.fbtnArticleGoTop.visibility = View.GONE
+        }
+    }
+
+    private fun onTouchBookmark() {
+        binding.ivArticleBookmark.setOnClickListener {
+            viewModel.swtich()
         }
     }
 }
