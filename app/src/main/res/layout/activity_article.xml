@@ -102,7 +102,7 @@
                             <TextView
                                 android:id="@+id/tv_article_title_title"
                                 android:layout_width="match_parent"
-                                android:layout_height="0dp"
+                                android:layout_height="wrap_content"
                                 android:text="@{data.title}"
                                 android:textAppearance="@style/TextAppearance.LionHeart.Head1"
                                 android:textColor="@color/gray_900"
