@@ -1,4 +1,5 @@
 # 🦁LionHeart-AOS🦁
+![app_icon](https://github.com/gosopt-LionHeart/LionHeart-AOS/assets/74162198/a1ede25c-bc83-4b6f-9af9-75597bc03a7a)
 ```
 하루 10분, 좋은 아빠가 되는 방법
 ```
