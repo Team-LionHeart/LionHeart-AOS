@@ -15,7 +15,6 @@ class BabyNameFragment : BindingFragment<FragmentBabyNameBinding>(R.layout.fragm
     private val viewModel by viewModels<BabyNameViewModel>()
 
     override fun constructLayout() {
-
         with(binding) {
             // databinding
             vm = viewModel
