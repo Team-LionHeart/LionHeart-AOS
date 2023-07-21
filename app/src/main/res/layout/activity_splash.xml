@@ -23,8 +23,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:background="@color/background"
 
-
-
             app:lottie_autoPlay="true"
             app:lottie_rawRes="@raw/lion_splash" />
     </androidx.constraintlayout.widget.ConstraintLayout>

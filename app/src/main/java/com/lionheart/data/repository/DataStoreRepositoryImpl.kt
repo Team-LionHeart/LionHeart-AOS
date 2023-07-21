@@ -10,7 +10,7 @@ import com.lionheart.data.LionDataStore.dataStore
 import com.lionheart.domain.entity.Authentication
 import com.lionheart.domain.repository.DataStoreRepository
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import timber.log.Timber
 import javax.inject.Inject
@@ -23,7 +23,7 @@ class DataStoreRepositoryImpl @Inject constructor(
      * 없을 경우, null 응답
      * (already cached on DataStore Layer)
      */
-    override suspend fun getAuthentication(): Authentication {
+    override suspend fun getAuthentication(): Authentication? {
         return context.dataStore.data
             .catch { e: Throwable ->
                 Timber.tag("dataStore_auth")
@@ -31,11 +31,13 @@ class DataStoreRepositoryImpl @Inject constructor(
                 emit(emptyPreferences())
             }
             .map { preferences: Preferences ->
-                Authentication(
-                    accessToken = preferences[LionDataStore.API_ACCESS_TOKEN]!!,
-                    refreshToken = preferences[LionDataStore.API_REFRESH_TOKEN] ?: ""
-                )
-            }.first()
+                preferences[LionDataStore.API_ACCESS_TOKEN]?.let {
+                    Authentication(
+                        accessToken = it,
+                        refreshToken = preferences[LionDataStore.API_REFRESH_TOKEN] ?: ""
+                    )
+                }
+            }.firstOrNull()
     }
 
     override suspend fun setAuthentication(authentication: Authentication) {

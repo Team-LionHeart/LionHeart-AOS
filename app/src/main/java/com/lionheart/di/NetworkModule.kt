@@ -48,8 +48,8 @@ class NetworkModule @Inject constructor(
                     CoroutineScope(Dispatchers.IO).launch {
                         addInterceptor(
                             RequestInterceptor(
-                                accessToken = "Bearer ${dataStoreRepository.getAuthentication().accessToken}",
-                                refreshToken = "Bearer ${dataStoreRepository.getAuthentication().refreshToken}"
+                                accessToken = "Bearer ${dataStoreRepository.getAuthentication()!!.accessToken}",
+                                refreshToken = "Bearer ${dataStoreRepository.getAuthentication()!!.refreshToken}"
                             )
                         )
                     }

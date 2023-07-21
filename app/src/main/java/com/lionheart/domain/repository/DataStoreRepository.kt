@@ -4,5 +4,5 @@ import com.lionheart.domain.entity.Authentication
 
 interface DataStoreRepository {
     suspend fun setAuthentication(authentication: Authentication)
-    suspend fun getAuthentication(): Authentication
+    suspend fun getAuthentication(): Authentication?
 }
