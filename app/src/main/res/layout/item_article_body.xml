@@ -21,7 +21,7 @@
             android:id="@+id/tv_article_body_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.LionHeart.Body2_Regular"
+            android:textAppearance="@style/TextAppearance.LionHeart.Body2_Regular_2"
             android:textColor="@color/gray_900"
             app:layout_constraintTop_toTopOf="parent"
             android:text="@{component.content}"
