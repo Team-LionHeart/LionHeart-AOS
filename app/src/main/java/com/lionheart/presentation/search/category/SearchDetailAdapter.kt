@@ -12,6 +12,7 @@ import com.lionheart.domain.entity.Article
 
 class SearchDetailAdapter(
     private val onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+    private val onClickArticle: (articleId: Int) -> Unit
 ) : ListAdapter<Article, SearchDetailAdapter.SearchDetailViewHolder>(diffUtil) {
     private val bookmarkStatus = SparseBooleanArray()
 
@@ -56,6 +57,9 @@ class SearchDetailAdapter(
     }
 
     override fun onBindViewHolder(holder: SearchDetailViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            onClickArticle(getItem(position).articleId.toInt())
+        }
         holder.onBind(getItem(position), bookmarkStatus, onClickBookmark)
     }
 
