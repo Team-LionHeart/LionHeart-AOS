@@ -1,6 +1,8 @@
 package com.lionheart.presentation.search.category
 
 import android.content.Intent
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -11,7 +13,6 @@ import com.lionheart.core.intent.getParcelable
 import com.lionheart.core.uistate.UiState.Failure
 import com.lionheart.core.uistate.UiState.Success
 import com.lionheart.databinding.ActivitySearchDetailBinding
-import com.lionheart.domain.entity.ArticleDetail
 import com.lionheart.domain.entity.SearchCategory
 import com.lionheart.presentation.article.ArticleActivity
 import com.lionheart.presentation.search.SearchFragment.Companion.SEARCH_CATEGORY
@@ -39,14 +40,14 @@ class SearchDetailActivity :
     private fun initAdapter() {
         val searchCategory = intent.getParcelable(SEARCH_CATEGORY, SearchCategory::class.java)
         searchDetailAdapter = SearchDetailAdapter(
-            { articleId, switching ->
+            { article, articleId, switching ->
                 viewModel.switchBookmark(
                     articleId,
                     switching,
                 )
             },
-            { articleId ->
-                intentToArticleDetail(articleId)
+            { articleId, isMarked ->
+                intentToArticleDetail(articleId, isMarked)
             },
         )
         searchCategory?.let {
@@ -77,10 +78,12 @@ class SearchDetailActivity :
         }.launchIn(lifecycleScope)
     }
 
-    private fun intentToArticleDetail(articleId: Int) {
-        Intent(this, ArticleActivity::class.java).apply {
+    private fun intentToArticleDetail(articleId: Int, isMarked: Boolean) {
+        val intent = Intent(this, ArticleActivity::class.java).apply {
             putExtra(ARTICLE_ID, articleId)
-        }.run(::startActivity)
+            putExtra(IS_MARKED, isMarked)
+        }
+        getResultBookmark.launch(intent)
     }
 
     private fun onClickBackButton() {
@@ -89,7 +92,16 @@ class SearchDetailActivity :
         }
     }
 
+    private val getResultBookmark = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+    ) { result: ActivityResult ->
+        if (result.resultCode == RESULT_OK) {
+            getCategoryArticle()
+        }
+    }
+
     companion object {
         const val ARTICLE_ID = "articleId"
+        const val IS_MARKED = "is_marked"
     }
 }
