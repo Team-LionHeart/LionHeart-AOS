@@ -6,6 +6,6 @@ data class Article(
     val mainImageUrl: String,
     val firstBodyContent: String?,
     val requiredTime: Long?,
-    val isMarked: Boolean,
+    var isMarked: Boolean,
     val tags: List<String>,
 )

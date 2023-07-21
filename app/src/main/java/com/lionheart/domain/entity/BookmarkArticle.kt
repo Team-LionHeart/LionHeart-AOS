@@ -8,7 +8,7 @@ data class BookmarkArticle(
 ){
     data class ArticleSummary(
         val articleId: Long,
-        val isMarked: Boolean,
+        var isMarked: Boolean,
         val mainImageUrl: String,
         val tags: List<String>,
         val title: String,
