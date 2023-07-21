@@ -26,6 +26,7 @@ android {
         buildConfigField "String","BASE_URL",properties['base.url']
         buildConfigField "String","KAKAO_API_KEY",properties['kakao_api_key']
         manifestPlaceholders = [KAKAO_API_KEY:properties['kakao_api_key_manifest']]
+        buildConfigField "String","LION_HEART_LOGIN_TOKEN",properties['lion_heart_login_token']
     }
 
     buildTypes {

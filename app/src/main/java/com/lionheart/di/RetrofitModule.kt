@@ -2,6 +2,7 @@ package com.lionheart.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.lionheart.BuildConfig.BASE_URL
+import com.lionheart.BuildConfig.LION_HEART_LOGIN_TOKEN
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,6 +30,7 @@ object RetrofitModule {
                     request()
                         .newBuilder()
                         // Header 추가
+                        .header("Authorization", "Bearer $LION_HEART_LOGIN_TOKEN")
                         .build(),
                 )
             }
