@@ -15,7 +15,6 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
     private val viewModel: SplashViewModel by viewModels()
     override fun constructLayout() {
         viewModel.checkAutoLogin()
-        binding.ltTemp.playAnimation()
     }
 
     override fun addListeners() {
