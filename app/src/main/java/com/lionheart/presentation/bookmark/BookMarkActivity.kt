@@ -1,5 +1,6 @@
 package com.lionheart.presentation.bookmark
 
+import android.content.Intent
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -11,6 +12,8 @@ import com.lionheart.core.uistate.UiState.Failure
 import com.lionheart.core.uistate.UiState.Success
 import com.lionheart.databinding.ActivityBookmarkBinding
 import com.lionheart.domain.entity.BookmarkArticle
+import com.lionheart.presentation.article.ArticleActivity
+import com.lionheart.presentation.search.category.SearchDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -33,12 +36,23 @@ class BookMarkActivity : BindingActivity<ActivityBookmarkBinding>(R.layout.activ
 
     private fun initAdapter() {
         bookmarkTitleAdapter = BookmarkTitleAdapter()
-        bookmarkArticleAdapter = BookmarkArticleAdapter { articleId, switching ->
-            viewModel.switchBookmark(articleId, switching)
-        }
+        bookmarkArticleAdapter = BookmarkArticleAdapter(
+            { articleId, switching ->
+                viewModel.switchBookmark(articleId, switching)
+            },
+            { articleId ->
+                intentToArticleDetail(articleId)
+            }
+        )
 
         binding.rvBookmarkArticle.adapter =
             ConcatAdapter(bookmarkTitleAdapter, bookmarkArticleAdapter)
+    }
+
+    private fun intentToArticleDetail(articleId: Int) {
+        Intent(this, ArticleActivity::class.java).apply {
+            putExtra(SearchDetailActivity.ARTICLE_ID, articleId)
+        }.run(::startActivity)
     }
 
     private fun onClickBackButton() {
