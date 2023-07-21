@@ -30,7 +30,7 @@ class CourseDetailActivity :
 
     override fun constructLayout() {
         getWeeklyArticle()
-        Timber.d("${intent.getIntExtra("week", 0)}, ${intent.getStringExtra("imageUrl")}")
+        Timber.d("${intent.getLongExtra("week", 0)}, ${intent.getStringExtra("imageUrl")}")
         // databinding
         with(binding) {
             vm = viewModel

@@ -6,6 +6,7 @@ import com.lionheart.data.model.response.ArticleListResponse
 import com.lionheart.data.model.response.BaseResponse
 import com.lionheart.data.model.response.BookMarkListResponse
 import com.lionheart.data.model.response.TodayArticleResponse
+import com.lionheart.data.model.response.WeeklyArticleResponse
 import com.lionheart.domain.entity.ArticleCategory
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -30,7 +31,7 @@ interface ArticleService {
     @GET("/api/v1/article/week/{week}")
     suspend fun getWeeklyArticle(
         @Path("week") week: Long,
-    ): BaseResponse<ArticleListResponse>
+    ): BaseResponse<WeeklyArticleResponse>
 
     @GET("/api/v1/article/bookmarks")
     suspend fun getBookmarks(): BaseResponse<BookMarkListResponse>

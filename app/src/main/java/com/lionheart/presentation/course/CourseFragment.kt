@@ -37,7 +37,7 @@ class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_
 
     private fun initRecyclerView() {
         viewModel.courseList.observe(this@CourseFragment) {
-            _courseAdapter = CourseAdapter(it) { week, image -> goToDetail(week.toInt(), image) }
+            _courseAdapter = CourseAdapter(it) { week, image -> goToDetail(week, image) }
 
             with(binding.rvCourseContent) {
                 adapter = courseAdapter
@@ -55,7 +55,7 @@ class CourseFragment : BindingFragment<FragmentCourseBinding>(R.layout.fragment_
         }
     }
 
-    private fun goToDetail(week: Int, image: String) {
+    private fun goToDetail(week: Long, image: String) {
         Intent(activity, CourseDetailActivity::class.java).apply {
             putExtra(WEEK, week)
             putExtra("imageUrl", image)
