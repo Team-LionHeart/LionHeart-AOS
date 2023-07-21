@@ -11,8 +11,8 @@ import com.lionheart.databinding.ItemSearchDetailArticleBinding
 import com.lionheart.domain.entity.Article
 
 class SearchDetailAdapter(
-    private val onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
-    private val onClickArticle: (articleId: Int) -> Unit
+    private val onClickBookmark: (article: Article, articleId: Long, switching: Boolean) -> Unit,
+    private val onClickArticle: (articleId: Int, isMarked: Boolean) -> Unit,
 ) : ListAdapter<Article, SearchDetailAdapter.SearchDetailViewHolder>(diffUtil) {
     private val bookmarkStatus = SparseBooleanArray()
 
@@ -21,7 +21,7 @@ class SearchDetailAdapter(
         fun onBind(
             data: Article,
             bookmarkStatus: SparseBooleanArray,
-            onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+            onClickBookmark: (article: Article, articleId: Long, switching: Boolean) -> Unit,
         ) {
             binding.data = data
             binding.ivSearchDetailThumbnail.load(data.mainImageUrl)
@@ -32,14 +32,15 @@ class SearchDetailAdapter(
         private fun initBookmark(
             data: Article,
             bookmarkStatus: SparseBooleanArray,
-            onClickBookmark: (articleId: Long, switching: Boolean) -> Unit,
+            onClickBookmark: (article: Article, articleId: Long, switching: Boolean) -> Unit,
         ) {
             with(binding) {
                 ivSearchDetailBookmark.isSelected = data.isMarked
                 ivSearchDetailBookmark.setOnClickListener {
                     bookmarkStatus.put(position, ivSearchDetailBookmark.isSelected)
                     ivSearchDetailBookmark.isSelected = ivSearchDetailBookmark.isSelected.not()
-                    onClickBookmark(data.articleId, ivSearchDetailBookmark.isSelected)
+                    data.isMarked = ivSearchDetailBookmark.isSelected
+                    onClickBookmark(data, data.articleId, ivSearchDetailBookmark.isSelected)
                     // 북마크 저장 작업
                 }
             }
@@ -57,16 +58,17 @@ class SearchDetailAdapter(
     }
 
     override fun onBindViewHolder(holder: SearchDetailViewHolder, position: Int) {
+        val article = getItem(position)
         holder.itemView.setOnClickListener {
-            onClickArticle(getItem(position).articleId.toInt())
+            onClickArticle(article.articleId.toInt(), article.isMarked)
         }
-        holder.onBind(getItem(position), bookmarkStatus, onClickBookmark)
+        holder.onBind(article, bookmarkStatus, onClickBookmark)
     }
 
     companion object {
         private val diffUtil = ItemDiffCallback<Article>(
             onItemsTheSame = { old, new -> old == new },
-            onContentsTheSame = { old, new -> old == new },
+            onContentsTheSame = { old, new -> old.isMarked == new.isMarked },
         )
     }
 }
