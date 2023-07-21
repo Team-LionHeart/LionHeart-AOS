@@ -1,6 +1,7 @@
 package com.lionheart.presentation
 
 import android.content.Intent
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.lionheart.R
 import com.lionheart.core.binding.BindingActivity
@@ -26,10 +27,32 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     private fun initBottomNavigation() {
         binding.bnvMain.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.today_fragment -> this.changeFragment(TodayFragment())
-                R.id.search_fragment -> this.changeFragment(SearchFragment())
-                R.id.course_fragment -> this.changeFragment(CourseFragment())
-                else -> this.changeFragment(ChallengeFragment())
+                R.id.today_fragment -> {
+                    this.changeFragment(TodayFragment())
+                    binding.ivMainLogo.visibility = View.VISIBLE
+                    binding.tvMainTop.visibility = View.GONE
+                }
+
+                R.id.search_fragment -> {
+                    this.changeFragment(SearchFragment())
+                    binding.tvMainTop.text = "탐색"
+                    binding.tvMainTop.visibility = View.VISIBLE
+                    binding.ivMainLogo.visibility = View.GONE
+                }
+
+                R.id.course_fragment -> {
+                    this.changeFragment(CourseFragment())
+                    binding.tvMainTop.text = "커리큘럼"
+                    binding.tvMainTop.visibility = View.VISIBLE
+                    binding.ivMainLogo.visibility = View.GONE
+                }
+
+                else -> {
+                    this.changeFragment(ChallengeFragment())
+                    binding.tvMainTop.text = "챌린지"
+                    binding.tvMainTop.visibility = View.VISIBLE
+                    binding.ivMainLogo.visibility = View.GONE
+                }
             }
             return@setOnItemSelectedListener true
         }
