@@ -1,7 +1,10 @@
 package com.lionheart.presentation.bookmark
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -26,6 +29,7 @@ class BookMarkActivity : BindingActivity<ActivityBookmarkBinding>(R.layout.activ
     private val viewModel by viewModels<BookmarkViewModel>()
 
     override fun constructLayout() {
+        viewModel.getBookmarkArticle()
         initAdapter()
         getBookmarkArticleState()
     }
@@ -40,19 +44,30 @@ class BookMarkActivity : BindingActivity<ActivityBookmarkBinding>(R.layout.activ
             { articleId, switching ->
                 viewModel.switchBookmark(articleId, switching)
             },
-            { articleId ->
-                intentToArticleDetail(articleId)
-            }
+            { articleId, isMarked ->
+                intentToArticleDetail(articleId, isMarked)
+            },
         )
 
         binding.rvBookmarkArticle.adapter =
             ConcatAdapter(bookmarkTitleAdapter, bookmarkArticleAdapter)
     }
 
-    private fun intentToArticleDetail(articleId: Int) {
-        Intent(this, ArticleActivity::class.java).apply {
+    private fun intentToArticleDetail(articleId: Int, isMarked: Boolean) {
+        val intent = Intent(this, ArticleActivity::class.java).apply {
             putExtra(SearchDetailActivity.ARTICLE_ID, articleId)
-        }.run(::startActivity)
+            putExtra(SearchDetailActivity.IS_MARKED, isMarked)
+        }
+        getResultBookmark.launch(intent)
+    }
+
+    private val getResultBookmark = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+    ) { result: ActivityResult ->
+        if (result.resultCode == RESULT_OK) {
+            Log.d("뭐가 문제냐ㅁㄴ옿ㅁ;ㅓㄴㅇ롬ㄴ올", "ㅁㄴ아ㅓ호만오리")
+            viewModel.getBookmarkArticle()
+        }
     }
 
     private fun onClickBackButton() {

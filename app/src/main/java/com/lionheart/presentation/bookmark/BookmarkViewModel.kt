@@ -26,11 +26,7 @@ class BookmarkViewModel @Inject constructor(
     private val _bookmarkArticleState = MutableSharedFlow<UiState<BookmarkArticle>>()
     val bookmarkArticleState = _bookmarkArticleState.asSharedFlow()
 
-    init {
-        getBookmarkArticle()
-    }
-
-    private fun getBookmarkArticle() {
+    fun getBookmarkArticle() {
         viewModelScope.launch {
             articleRepository.getBookmarks().catch { error ->
                 when (error) {
