@@ -18,7 +18,7 @@ interface ArticleRepository {
     /**
      * 아티클 디테일 조회
      */
-    suspend fun getArticleDetail(articleId: Long): ArticleDetail
+    suspend fun getArticleDetail(articleId: Int): Flow<ArticleDetail>
 
     /**
      * 투데이 아티클 조회

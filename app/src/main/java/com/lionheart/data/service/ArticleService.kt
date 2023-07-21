@@ -22,7 +22,7 @@ interface ArticleService {
 
     @GET("/api/v1/article/{articleId}")
     suspend fun getArticleDetail(
-        @Path("articleId") articleId: String,
+        @Path("articleId") articleId: Int,
     ): BaseResponse<ArticleDetailResponse>
 
     @GET("/api/v1/article/today")
