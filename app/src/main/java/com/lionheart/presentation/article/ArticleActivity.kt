@@ -25,6 +25,7 @@ class ArticleActivity : BindingActivity<ActivityArticleBinding>(R.layout.activit
         getArticleComponents()
 //        getArticleComponentsState()
         setBookmak()
+        binding.ivArticleBookmark.visibility = View.GONE
     }
 
     override fun addListeners() {
@@ -77,7 +78,7 @@ class ArticleActivity : BindingActivity<ActivityArticleBinding>(R.layout.activit
 
     private fun onClickBackButton() {
         binding.ivArticleTopX.setOnClickListener {
-            if(!isFinishing) finish()
+            if (!isFinishing) finish()
         }
     }
 
