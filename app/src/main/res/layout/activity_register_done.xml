@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,8 @@
             android:id="@+id/iv_register_done"
             android:layout_width="260dp"
             android:layout_height="0dp"
-            android:src="@color/gray_900"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_onboarding_done"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
