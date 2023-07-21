@@ -16,39 +16,9 @@
         android:theme="@style/Theme.LionHeart"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity android:name=".presentation.auth.splash.SplashActivity"
-            android:exported="true"/>
         <activity
-            android:name=".presentation.auth.onboarding.BabyNameActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize|stateAlwaysVisible" />
-        <activity
-            android:name=".presentation.auth.onboarding.PregnantWeekActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize|stateAlwaysVisible">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".presentation.auth.onboarding.RegisterDoneActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.bookmark.BookMarkActivity"
-            android:exported="true" />
-        <activity
-            android:name=".presentation.course.CourseDetailActivity"
-            android:exported="true" />
-        <activity
-            android:name=".presentation.MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
+            android:name=".presentation.auth.splash.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.LionHeart" />
-        <activity
-            android:name=".presentation.auth.splash.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,7 +27,41 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".presentation.auth.onboarding.BabyNameActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible" />
+        <activity
+            android:name=".presentation.auth.onboarding.PregnantWeekActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible" />
+        <activity
+            android:name=".presentation.auth.onboarding.RegisterDoneActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.bookmark.BookMarkActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.course.CourseDetailActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.MainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.LionHeart" />
+        <activity
+            android:name=".presentation.auth.splash.LoginActivity"
+            android:exported="false">
+
+        </activity>
+        <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -72,19 +76,15 @@
         </activity>
         <activity
             android:name=".presentation.search.category.SearchDetailActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".presentation.article.ArticleActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
 
         <service
             android:name=".LionHeartMessagingService"
+            android:screenOrientation="portrait"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
