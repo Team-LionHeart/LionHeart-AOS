@@ -38,6 +38,14 @@
             app:layout_constraintStart_toStartOf="@id/iv_course_weekly_header"
             app:layout_constraintTop_toTopOf="@id/iv_course_weekly_header" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:background="@drawable/shape_gradient_vertical_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_course_weekly_header_label"
             android:layout_width="wrap_content"

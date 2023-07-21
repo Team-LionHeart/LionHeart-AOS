@@ -27,11 +27,6 @@ class CourseDetailViewModel @Inject constructor(
     private val _getCourseArticleState = MutableSharedFlow<UiState<List<Article>>>()
     val getCourseArticleState = _getCourseArticleState.asSharedFlow()
 
-    val tempHeader = CourseWeek(
-        week = 6,
-        imageUrl = "https://github.com/gosopt-LionHeart/LionHeart-AOS/assets/74162198/4743f4e7-5323-4230-8db2-ac38df8e926b",
-    )
-
     fun getCourseArticle(week: Long) {
         viewModelScope.launch {
             articleRepository.getWeeklyArticle(week)
