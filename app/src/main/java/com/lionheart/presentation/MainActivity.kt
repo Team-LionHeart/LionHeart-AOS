@@ -9,6 +9,7 @@ import com.lionheart.databinding.ActivityMainBinding
 import com.lionheart.presentation.bookmark.BookMarkActivity
 import com.lionheart.presentation.challenge.ChallengeFragment
 import com.lionheart.presentation.course.CourseFragment
+import com.lionheart.presentation.mypage.MyPageActivity
 import com.lionheart.presentation.search.SearchFragment
 import com.lionheart.presentation.today.TodayFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +23,9 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
     override fun addListeners() {
         intentToBookmark()
+        binding.ivMainMypage.setOnClickListener {
+            Intent(this, MyPageActivity::class.java).run(::startActivity)
+        }
     }
 
     private fun initBottomNavigation() {

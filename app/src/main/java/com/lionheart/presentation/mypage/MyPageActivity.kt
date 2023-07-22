@@ -7,5 +7,9 @@ import com.lionheart.core.binding.BindingActivity
 import com.lionheart.databinding.ActivityMyPageBinding
 
 class MyPageActivity : BindingActivity<ActivityMyPageBinding>(R.layout.activity_my_page) {
-
+    override fun addListeners() {
+        binding.btnMypageBack.setOnClickListener {
+            finish()
+        }
+    }
 }
